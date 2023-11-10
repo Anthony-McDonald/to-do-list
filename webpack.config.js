@@ -38,10 +38,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
          test: /\.(csv|tsv)$/i,
          use: ['csv-loader'],
        },
-       {
-         test: /\.xml$/i,
-         use: ['xml-loader'],
-       },
       {
         test: /\.yaml$/i,
         type: 'json',

@@ -33,8 +33,10 @@ import moreIcon from './assets/more.svg'
     headerLeft.appendChild(noteSVG);
   //Header right
     const dropdown = document.createElement('button');
+    dropdown.id = 'dropid'
     dropdown.classList.add("dropbutton");
-    dropdown
+
+
     const moreSVG = new Image();
     moreSVG.src = moreIcon;
     moreSVG.classList.add('svg');
@@ -43,7 +45,11 @@ import moreIcon from './assets/more.svg'
 
   // Dropdown functionality
   dropdown.addEventListener("click", function() {
-    alert("dropdown pressed");
+    if (showMore.style.display === 'none') {
+      showMore.style.display = 'block';
+    } else {
+      showMore.style.display = 'none';
+    }
   });
 
   // Append to main header
@@ -52,10 +58,17 @@ import moreIcon from './assets/more.svg'
     // Main elements
     const mainholder = document.createElement('div');
     mainholder.classList.add("mainholder");
+
+    const showMore = document.createElement('div');
+    showMore.classList.add('showMore');
+    showMore.innerText = 'test';
+
+
     const main = document.createElement('div');
     main.classList.add("main");
+    mainholder.appendChild(showMore);
     mainholder.appendChild(main);
-    main.innerHTML = "test"
+    main.innerHTML = "test TEST tEsTeR"
 
     // Footer
     const footer = document.createElement('div');
@@ -63,25 +76,15 @@ import moreIcon from './assets/more.svg'
     footer.innerText = "Made by Anthony McDonald"
 
 
-//    element.classList.add("test")
-
-
-//   // Add the image to our existing div.
-
-//   const myIcon = new Image();
-
-//   myIcon.src = Icon;
-
-
-//   element.appendChild(myIcon);
-
-element.appendChild(header);
-element.appendChild(mainholder);
-element.appendChild(footer);
+    element.appendChild(header);
+    element.appendChild(mainholder);
+    element.appendChild(footer);
 
    return element;
  }
 
  document.body.appendChild(component());
+
+
 
 
