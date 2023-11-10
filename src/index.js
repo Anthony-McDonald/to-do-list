@@ -28,23 +28,41 @@ import moreIcon from './assets/more.svg'
     const noteSVG = new Image();
     noteSVG.src = journalIcon;
     noteSVG.classList.add('svg');
+
+    headerLeft.appendChild(headerText);
+    headerLeft.appendChild(noteSVG);
   //Header right
     const dropdown = document.createElement('button');
+    dropdown.classList.add("dropbutton");
+    dropdown
     const moreSVG = new Image();
     moreSVG.src = moreIcon;
     moreSVG.classList.add('svg');
 
     dropdown.appendChild(moreSVG);
 
+  // Dropdown functionality
+  dropdown.addEventListener("click", function() {
+    alert("dropdown pressed");
+  });
 
-    headerLeft.appendChild(headerText);
-    headerLeft.appendChild(noteSVG);
-
+  // Append to main header
     header.appendChild(headerLeft);
     header.appendChild(dropdown);
     // Main elements
+    const mainholder = document.createElement('div');
+    mainholder.classList.add("mainholder");
     const main = document.createElement('div');
     main.classList.add("main");
+    mainholder.appendChild(main);
+    main.innerHTML = "test"
+
+    // Footer
+    const footer = document.createElement('div');
+    footer.classList.add("footer");
+    footer.innerText = "Made by Anthony McDonald"
+
+
 //    element.classList.add("test")
 
 
@@ -58,7 +76,8 @@ import moreIcon from './assets/more.svg'
 //   element.appendChild(myIcon);
 
 element.appendChild(header);
-element.appendChild(main);
+element.appendChild(mainholder);
+element.appendChild(footer);
 
    return element;
  }

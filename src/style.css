@@ -1,6 +1,8 @@
 /* Small devices such as large phones (640px and up) */
 @media only screen and (min-width: 40em) {
-
+.dropbutton {
+    display: none;
+}
 }
 
 /* Medium devices such as tablets (768px and up) */
@@ -43,34 +45,58 @@ body {
 
 .header {
     background-color: 257675;
-    flex-grow: 0.05;
-    max-height: 5rem;
-    flex-basis: 0.1;
+    height: 4rem;
+    flex-shrink: 0;
     color: white;
     font-size: 1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0;
 }
 
 .headerleft {
     display: flex;
+    align-items: center;
 }
 
 .headertext {
 margin-left: 10;
-font-size: 20px;
+font-size: 25px;
 }
 
 .svg {
     padding-left: 0.5rem;
     padding-right: 1rem;
-    height: 2rem;
-    fill: white;
+    height: 3rem;
+    filter: invert(100%) sepia(0%) saturate(7470%) hue-rotate(116deg) brightness(109%) contrast(109%);
+}
+
+.dropbutton {
+    padding: 0;
+    margin-right: 1rem;
+    background: none;
+    border: none;
+}
+
+.mainholder {
+    background-color: 065a60;
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .main {
-    background-color: 065a60;
-    flex-grow: 1;
+    background-color: a7c8c7;
+    width: 80vw;
+    height: 80vh;
+    border-radius: 1rem;
+    padding: 1rem;
 }
 
+.footer {
+    text-align: center;
+    background-color: 257675;
+    color: white;
+}
