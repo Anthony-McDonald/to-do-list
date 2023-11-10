@@ -25,6 +25,11 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300&family=Oswald:wght@700&display=swap');
 
+:root {
+    --headerColour: #257675;
+    --mainColour: #a7c8c7;
+}
+
 html,
 body {
 	height: 100%;
@@ -46,7 +51,7 @@ body {
 }
 
 .header {
-    background-color: 257675;
+    background-color: var(--headerColour);
     height: 4rem;
     flex-shrink: 0;
     color: white;
@@ -101,14 +106,16 @@ font-family: 'Oswald';
     justify-self: start;
     z-index: 1;
     top: 0px;
+    border-radius: 1rem;
+    justify-content: center;
+    flex-shrink: 0;
+
 }
 
-.blockOnClick {
-    display: block;
-}
+
 
 .main {
-    background-color: a7c8c7;
+    background-color: var(--mainColour);
     width: 80vw;
     height: 80vh;
     border-radius: 1rem;
@@ -120,6 +127,6 @@ font-family: 'Oswald';
 
 .footer {
     text-align: center;
-    background-color: 257675;
+    background-color: var(--headerColour);
     color: white;
 }

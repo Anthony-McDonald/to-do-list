@@ -44,11 +44,19 @@ import moreIcon from './assets/more.svg'
     dropdown.appendChild(moreSVG);
 
   // Dropdown functionality
+  let firstPress = true;
   dropdown.addEventListener("click", function() {
+
+
     if (showMore.style.display === 'none') {
-      showMore.style.display = 'block';
+      showMore.style.display = 'flex';
     } else {
       showMore.style.display = 'none';
+
+      if (firstPress) {
+        showMore.style.display = 'flex';
+        firstPress = false;
+      }
     }
   });
 
