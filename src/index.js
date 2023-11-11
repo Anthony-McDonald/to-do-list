@@ -1,7 +1,10 @@
 import _ from 'lodash';
 import './style.css'
 import journalIcon from './assets/notebook.svg';
-import moreIcon from './assets/more.svg'
+import moreIcon from './assets/more.svg';
+import homeIcon from './assets/home.svg';
+import todayIcon from './assets/calendar.svg';
+import weekIcon from './assets/calendar-range.svg';
 // import Data from './data.xml';
 // import Notes from './data.csv';
 // import yaml from './data.yaml'
@@ -57,8 +60,11 @@ import moreIcon from './assets/more.svg'
         showMore.style.display = 'flex';
         firstPress = false;
       }
+
+      
     }
   });
+
 
   // Append to main header
     header.appendChild(headerLeft);
@@ -69,7 +75,60 @@ import moreIcon from './assets/more.svg'
 
     const showMore = document.createElement('div');
     showMore.classList.add('showMore');
-    showMore.innerText = 'test';
+    showMore.id = 'showMore';
+
+
+    const homeBox = document.createElement('div');
+    homeBox.classList.add('sidebar1');
+    const homeSVG = new Image();
+    homeSVG.src = homeIcon;
+    homeBox.id = 'homeBox';
+    homeSVG.id = 'homeSVG';
+    homeSVG.classList.add('svg');
+    const homeText = document.createElement('h5');
+    homeText.classList.add("sidetext");
+    homeText.innerHTML = 'homebox'
+
+
+    homeBox.appendChild(homeSVG);
+    homeBox.appendChild(homeText)
+
+    const todayBox = document.createElement('div');
+    todayBox.classList.add('sidebar1');
+    todayBox.innerText = 'todaybox';
+    const weekBox = document.createElement('div');
+    weekBox.classList.add('sidebar1');
+    weekBox.innerText = 'weekbox';
+
+    const projectBox = document.createElement('div');
+    projectBox.classList.add('sidebar1');
+    projectBox.innerText = 'projectbox'
+
+    const proj1 = document.createElement('div');
+    proj1.classList.add('proj');
+    proj1.innerText = 'proj1';
+
+    const proj2 = document.createElement('div');
+    proj2.classList.add('proj');
+    proj2.innerText = 'proj2';
+
+    const proj3 = document.createElement('div');
+    proj3.classList.add('proj');
+    proj3.innerText = 'proj3';
+
+    projectBox.appendChild(proj1);
+    projectBox.appendChild(proj2);
+    projectBox.appendChild(proj3);
+
+    const noteBox = document.createElement('div');
+    noteBox.classList.add('sidebar1');
+    noteBox.innerText = 'notebox';
+
+    showMore.appendChild(homeBox);
+    showMore.appendChild(todayBox);
+    showMore.appendChild(weekBox);
+    showMore.appendChild(projectBox);
+    showMore.appendChild(noteBox);
 
 
     const main = document.createElement('div');
