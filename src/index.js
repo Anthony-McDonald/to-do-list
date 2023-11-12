@@ -5,6 +5,8 @@ import moreIcon from './assets/more.svg';
 import homeIcon from './assets/home.svg';
 import todayIcon from './assets/calendar.svg';
 import weekIcon from './assets/calendar-range.svg';
+import projIcon from './assets/proj.svg';
+import notesIcon from './assets/notes.svg';
 // import Data from './data.xml';
 // import Notes from './data.csv';
 // import yaml from './data.yaml'
@@ -79,12 +81,13 @@ import weekIcon from './assets/calendar-range.svg';
     showMore.classList.add('hide');
     showMore.id = 'showMore';
 
+    // homebox
 
     const homeBox = document.createElement('div');
     homeBox.classList.add('sidebar1');
+    homeBox.classList.add('sideoverwrite');
     const homeSVG = new Image();
     homeSVG.src = homeIcon;
-    homeBox.id = 'homeBox';
     homeSVG.id = 'homeSVG';
     homeSVG.classList.add('svg');
     const homeText = document.createElement('h5');
@@ -93,18 +96,61 @@ import weekIcon from './assets/calendar-range.svg';
 
 
     homeBox.appendChild(homeSVG);
-    homeBox.appendChild(homeText)
+    homeBox.appendChild(homeText);
+
+    //todaybox
 
     const todayBox = document.createElement('div');
     todayBox.classList.add('sidebar1');
-    todayBox.innerText = 'todaybox';
+    todayBox.classList.add('sideoverwrite');
+
+    const todaySVG = new Image();
+    todaySVG.src = todayIcon;
+    todaySVG.id = 'homeSVG';
+    todaySVG.classList.add('svg');
+
+    const todayText = document.createElement('h5');
+    todayText.classList.add("sidetext");
+    todayText.innerHTML = 'todaybox'
+
+    todayBox.appendChild(todaySVG);
+    todayBox.appendChild(todayText);
+
+    //weekbox
     const weekBox = document.createElement('div');
     weekBox.classList.add('sidebar1');
-    weekBox.innerText = 'weekbox';
+    weekBox.classList.add('sideoverwrite');
 
+    const weekSVG = new Image();
+    weekSVG.src = weekIcon;
+    weekSVG.id = 'homeSVG';
+    weekSVG.classList.add('svg');
+
+    const weekText = document.createElement('h5');
+    weekText.classList.add("sidetext");
+    weekText.innerHTML = 'todaybox'
+
+    weekBox.appendChild(weekSVG);
+    weekBox.appendChild(weekText);
+
+    //projectbox
     const projectBox = document.createElement('div');
     projectBox.classList.add('sidebar1');
-    projectBox.innerText = 'projectbox'
+
+    const projTitle = document.createElement('div');
+    projTitle.classList.add('projTitle');
+
+    const projTitleText = document.createElement('h5');
+    projTitleText.innerText = 'projectbox';
+    projTitleText.classList.add('sideText')
+
+    const projContent = document.createElement('div');
+    projContent.classList.add('projContent');
+
+
+    projectBox.appendChild(projTitle);
+    projectBox.appendChild(projContent);
+
 
     const proj1 = document.createElement('div');
     proj1.classList.add('proj');
@@ -118,13 +164,45 @@ import weekIcon from './assets/calendar-range.svg';
     proj3.classList.add('proj');
     proj3.innerText = 'proj3';
 
-    projectBox.appendChild(proj1);
-    projectBox.appendChild(proj2);
-    projectBox.appendChild(proj3);
+    const addProj = document.createElement('div');
+    addProj.classList.add('proj');
+    addProj.innerText = '+ PROJECT';
+
+    const projSVG = new Image();
+    projSVG.src = projIcon;
+    projSVG.id = 'homeSVG';
+    projSVG.classList.add('svg');
+
+    projTitle.appendChild(projSVG);
+    projTitle.appendChild(projTitleText);
+
+    projContent.appendChild(proj1);
+    projContent.appendChild(proj2);
+    projContent.appendChild(proj3);
+    projContent.appendChild(addProj);
+
+
+    //notebox
 
     const noteBox = document.createElement('div');
     noteBox.classList.add('sidebar1');
-    noteBox.innerText = 'notebox';
+    noteBox.classList.add('sideoverwrite');
+
+    const noteBSVG = new Image();
+    noteBSVG.src = notesIcon;
+    noteBSVG.id = 'homeSVG';
+    noteBSVG.classList.add('svg');
+
+    const noteText = document.createElement('h5');
+    noteText.classList.add("sidetext");
+    noteText.innerHTML = 'notebox'
+
+    noteBox.appendChild(noteBSVG);
+    noteBox.appendChild(noteText);
+
+
+
+    //append boxes
 
     showMore.appendChild(homeBox);
     showMore.appendChild(todayBox);
@@ -141,10 +219,22 @@ import weekIcon from './assets/calendar-range.svg';
     const sidebar = document.createElement('sidebar');
     sidebar.classList.add('homesidebar');
     sidebar.classList.add('hide2');
-    sidebar.innerText = 'temptext';
+
+    const sidebartitle = document.createElement('div');
+
+    const clnHomeBox = homeBox.cloneNode(true);
+    const clnTodayBox = todayBox.cloneNode(true);
+    const clnWeekBox = weekBox.cloneNode(true);
+    const clnProjectBox = projectBox.cloneNode(true);
+    const clnNoteBox = noteBox.cloneNode(true);
+    
+    sidebar.appendChild(clnHomeBox);
+    sidebar.appendChild(clnTodayBox);
+    sidebar.appendChild(clnWeekBox);
+    sidebar.appendChild(clnProjectBox);
+    sidebar.appendChild(clnNoteBox);
 
     mainholder.appendChild(sidebar);
-
     mainholder.appendChild(showMore);
     mainholder.appendChild(main);
  
