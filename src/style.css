@@ -1,13 +1,30 @@
 /* Small devices such as large phones (640px and up) */
 @media only screen and (min-width: 40em) {
-.dropbutton {
-    display: none;
-}
+
 }
 
 /* Medium devices such as tablets (768px and up) */
 @media only screen and (min-width: 48em) {
 
+    
+    .hide {
+        position: absolute !important;
+        top: -9999px !important;
+        left: -9999px !important;
+    }
+
+    .hide2 {
+        display: flex !important;
+    }
+
+    .homesidebar {
+        display: flex;
+    }
+
+
+
+
+    
 }
 
 /* Large devices such as laptops (1024px and up) */
@@ -30,6 +47,10 @@
     --mainColour: #a7c8c7;
     --dropdownColour: #9bdbd9;
 }
+.hide {
+
+}
+
 
 html,
 body {
@@ -94,8 +115,18 @@ font-family: 'Oswald';
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
+    flex-direction: row;
     position: relative;
+}
+
+.homesidebar {
+    display: none;
+    background-color: var(--headerColour);
+    border: black solid 1px;
+    height: 100%;
+    width: 18rem;
+    margin-right: 2rem;
+
 }
 
 .showMore {
@@ -169,6 +200,7 @@ font-family: 'Oswald';
     padding: 1rem;
     text-align: center;
     font-family: 'Kanit';
+    margin-right: 2rem;
 }
 
 

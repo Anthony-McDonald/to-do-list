@@ -38,6 +38,7 @@ import weekIcon from './assets/calendar-range.svg';
     const dropdown = document.createElement('button');
     dropdown.id = 'dropid'
     dropdown.classList.add("dropbutton");
+    dropdown.classList.add('hide');
 
 
     const moreSVG = new Image();
@@ -75,6 +76,7 @@ import weekIcon from './assets/calendar-range.svg';
 
     const showMore = document.createElement('div');
     showMore.classList.add('showMore');
+    showMore.classList.add('hide');
     showMore.id = 'showMore';
 
 
@@ -130,12 +132,22 @@ import weekIcon from './assets/calendar-range.svg';
     showMore.appendChild(projectBox);
     showMore.appendChild(noteBox);
 
-
+// mainbox declaration
     const main = document.createElement('div');
     main.classList.add("main");
+    main.innerHTML = "test TEST tEsTeR"
+
+// sidebar declaration
+    const sidebar = document.createElement('sidebar');
+    sidebar.classList.add('homesidebar');
+    sidebar.classList.add('hide2');
+    sidebar.innerText = 'temptext';
+
+    mainholder.appendChild(sidebar);
+
     mainholder.appendChild(showMore);
     mainholder.appendChild(main);
-    main.innerHTML = "test TEST tEsTeR"
+ 
 
     // Footer
     const footer = document.createElement('div');
