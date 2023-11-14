@@ -69,9 +69,7 @@ import noteMain from './note.js';
       if (firstPress) {
         showMore.style.display = 'flex';
         firstPress = false;
-      }
-
-      
+      }   
     }
   });
 
@@ -87,7 +85,6 @@ import noteMain from './note.js';
     const main = document.createElement('div');
     main.classList.add("main");
     main.id = 'mainID';
-    main.innerHTML = "test TEST tEsTeR"
 
     mainholder.appendChild(main);
 
@@ -287,7 +284,9 @@ import noteMain from './note.js';
     element.appendChild(mainholder);
     element.appendChild(footer);
 
-
+    window.onload = function() {
+      homeBox.click();
+    }
     
 
    return element;

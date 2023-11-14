@@ -203,6 +203,64 @@ font-family: 'Oswald';
     width: 100%;
 }
 
+#subTitle {
+    font-size: 2rem;
+    text-align: start;
+    font-weight: bold;
+}
+
+
+/* todoitem ids  */
+
+#toDoItem {
+    background-color: lightcyan;
+    height: 2rem;
+    width: 100%;
+    border-radius: 0.3rem;
+    margin: 0.3rem;
+    display: flex;
+}
+
+#priorityDiv {
+height: 100%;
+width: 0.3rem;
+}
+
+.priorityHigh {
+    background-color: red;
+}
+
+.priorityMedium {
+    background-color: yellow;
+}
+
+.priorityLow {
+    background-color: green;
+}
+
+#checkedDiv {
+
+}
+
+#titlediv {
+
+}
+
+#noteDiv {
+
+}
+
+#dateDiv {
+
+}
+
+#editDiv {
+
+}
+
+#deleteDiv {
+
+}
 
 
 .main {
