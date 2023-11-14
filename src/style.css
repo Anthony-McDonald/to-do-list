@@ -315,6 +315,7 @@ user-select: none;
     border:1px solid cyan;
     background-color: rgb(149, 233, 233);
     width: 8rem;
+    border-radius: 0.3rem;
 }
 
 
