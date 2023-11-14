@@ -61,10 +61,16 @@ export default class todoItem {
 
       div.id = 'toDoItem';
 
+      const left = document.createElement('div');
+      left.id = 'left';
+      const right = document.createElement('div');
+      right.id = 'right';
+
       //prioDiv
       const priorityDiv = document.createElement('div');
       priorityDiv.id = 'priorityDiv'
       priorityDiv.classList.add(priorityColourReturner(this.getPriority()));
+    
 
       //checkedDiv
       const checkedDiv = document.createElement('div');
@@ -73,6 +79,7 @@ export default class todoItem {
       //titleDiv
       const titleDiv = document.createElement('div');
       titleDiv.id = 'titleDiv';
+      titleDiv.innerText = this.getTitle();
 
       //noteDiv
       const noteDiv = document.createElement('div');
@@ -89,14 +96,19 @@ export default class todoItem {
       //deleteDiv
       const deleteDiv = document.createElement('div');
       deleteDiv.id = 'deleteDiv';
+
+      left.appendChild(priorityDiv);
+      left.appendChild(checkedDiv);
+      left.appendChild(titleDiv);
+
+      right.appendChild(noteDiv);
+      right.appendChild(dateDiv);
+      right.appendChild(editDiv);
+      right.appendChild(deleteDiv);
+
   
-      div.appendChild(priorityDiv);
-      div.appendChild(checkedDiv);
-      div.appendChild(titleDiv);
-      div.appendChild(noteDiv);
-      div.appendChild(dateDiv);
-      div.appendChild(editDiv);
-      div.appendChild(deleteDiv);
+      div.appendChild(left);
+      div.appendChild(right);
 
       return div;
   }
