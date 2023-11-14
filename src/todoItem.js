@@ -81,13 +81,16 @@ export default class todoItem {
       titleDiv.id = 'titleDiv';
       titleDiv.innerText = this.getTitle();
 
-      //noteDiv
-      const noteDiv = document.createElement('div');
-      noteDiv.id = 'noteDiv';
+      //detailsDiv
+      const detailsDiv = document.createElement('div');
+      detailsDiv.id = 'detailsDiv';
+      detailsDiv.innerText = 'DETAILS';
+
 
       //dateDiv
       const dateDiv = document.createElement('div');
       dateDiv.id = 'dateDiv';
+      dateDiv.innerText = this.getDueDate();
 
       //editDiv
       const editDiv = document.createElement('div');
@@ -101,7 +104,7 @@ export default class todoItem {
       left.appendChild(checkedDiv);
       left.appendChild(titleDiv);
 
-      right.appendChild(noteDiv);
+      right.appendChild(detailsDiv);
       right.appendChild(dateDiv);
       right.appendChild(editDiv);
       right.appendChild(deleteDiv);

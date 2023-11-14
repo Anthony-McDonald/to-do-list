@@ -220,6 +220,7 @@ font-family: 'Oswald';
     margin: 0.3rem;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 #left {
@@ -230,6 +231,7 @@ font-family: 'Oswald';
 #right {
     display: flex;
     align-items: center;
+    height: 100%;
 }
 #priorityDiv {
 height: 100%;
@@ -256,12 +258,18 @@ width: 0.3rem;
 margin-left: 0.5rem;
 }
 
-#noteDiv {
-
+#detailsDiv {
+height: 50%;
+width: 3rem;
+border: 2px solid green;
+border-radius: 0.2rem;
+color: green;
+margin: 1rem;
+font-size: 0.6rem;
 }
 
 #dateDiv {
-
+font-size: 0.7rem;
 }
 
 #editDiv {
