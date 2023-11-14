@@ -1,3 +1,6 @@
+import editIcon from './assets/edit.svg';
+import deleteIcon from './assets/delete.svg'
+
 export default class todoItem {
     constructor(title, description, dueDate, priority, attachedNotes, checked) {
       this.title = title;
@@ -74,6 +77,15 @@ export default class todoItem {
 
       //checkedDiv
       const checkedDiv = document.createElement('div');
+      const checkBox = document.createElement('input');
+      checkBox.id = 'checkbox';
+      checkBox.type = 'checkbox';
+      
+      if (this.getChecked() == true) {
+        checkBox.checked = true;
+      }
+
+      checkedDiv.appendChild(checkBox);
       checkedDiv.id = 'checkedDiv';
 
       //titleDiv
@@ -96,9 +108,20 @@ export default class todoItem {
       const editDiv = document.createElement('div');
       editDiv.id = 'editDiv';
 
+      const editSVG = new Image();
+      editSVG.src = editIcon;
+      editSVG.classList.add('svgToDo');
+      editSVG.classList.add('editSVG');
+
       //deleteDiv
       const deleteDiv = document.createElement('div');
       deleteDiv.id = 'deleteDiv';
+
+      const deleteSVG = new Image();
+      deleteSVG.src = deleteIcon;
+      deleteSVG.classList.add('svgToDo');
+      deleteSVG.classList.add('deleteSVG');
+      //appends
 
       left.appendChild(priorityDiv);
       left.appendChild(checkedDiv);
@@ -108,6 +131,8 @@ export default class todoItem {
       right.appendChild(dateDiv);
       right.appendChild(editDiv);
       right.appendChild(deleteDiv);
+      right.appendChild(editSVG);
+      right.appendChild(deleteSVG);
 
   
       div.appendChild(left);

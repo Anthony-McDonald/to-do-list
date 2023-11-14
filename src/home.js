@@ -5,17 +5,23 @@ export default function homeMain() {
     homeMain.classList.add("main");
     
     const titleDiv = document.createElement('div');
+    titleDiv.id = 'subpageTitleBar';
 
-    titleDiv.innerText = 'Home';
-
-    titleDiv.id = 'subTitle';
+    const addNewToDo = document.createElement('button');
+    addNewToDo.innerText = 'Add a Task'
+    addNewToDo.id = 'addTaskButton';
+    
 
 
     const title = document.createElement('h1');
 
+    title.innerText = 'Home';
+
+    title.id = 'subTitle';
+
     const contentDiv = document.createElement('div');
 
-    const exampleToDo = new todoItem('brush teeth', 'with toothpaste', '15/06/2024', 'medium', null, false,);
+    const exampleToDo = new todoItem('brush teeth', 'with toothpaste', '15/06/2024', 'medium', null, true,);
     const exampleToDo2 = new todoItem('brush teeth', 'with toothpaste', '15/06/2024', 'high', null, false,);
     const exampleToDo3 = new todoItem('brush teeth', 'with toothpaste', '15/06/2024', 'high', null, false,);
     const exampleToDo4 = new todoItem('brush teeth', 'with toothpaste', '15/06/2024', 'high', null, false,);
@@ -23,9 +29,10 @@ export default function homeMain() {
     contentDiv.appendChild(exampleToDo.returnDiv());
     contentDiv.appendChild(exampleToDo2.returnDiv());
 
+    titleDiv.appendChild(title);
+    titleDiv.appendChild(addNewToDo);
 
     homeMain.appendChild(titleDiv);
-    homeMain.appendChild(title);
     homeMain.appendChild(contentDiv);
 
     return homeMain;
