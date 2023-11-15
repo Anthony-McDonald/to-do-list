@@ -1,3 +1,5 @@
+import todoItem from "./todoItem";
+
 export default function showTaskForm() {
     console.log('task form being shown');
 
@@ -9,6 +11,17 @@ export default function showTaskForm() {
     divTitle.id = 'addTaskTitleBar';
 
     divTitle.textContent = 'Please fill out the information below'
+
+    const closeAddTask = document.createElement('div');
+    closeAddTask.id = 'closeAddTaskWindow';
+    closeAddTask.textContent = 'X';
+    divTitle.appendChild(closeAddTask);
+
+    closeAddTask.addEventListener('click', function() {
+        divToShow.remove();
+    })
+
+
     const divContent = document.createElement('div');
     divContent.id = 'addTaskContent';
 
@@ -16,7 +29,10 @@ export default function showTaskForm() {
 
    const formWrapper = document.createElement('form');
 
+   formWrapper.id = 'formID';
+
    const priorityDropdown = document.createElement('select');
+   priorityDropdown.id = 'priority'; 
 
    const option1 = document.createElement('option');
    option1.textContent = 'Low'
@@ -31,76 +47,75 @@ export default function showTaskForm() {
    submitButton.type = 'submit';
    
        // Create an input element for Task Name
-       let FN = document.createElement("input");
-       FN.setAttribute("type", "text");
-       FN.setAttribute("name", "TaskName");
-       FN.setAttribute("placeholder", "Task Name");
+       let TN = document.createElement("input");
+       TN.id = 'TN';
+       TN.setAttribute("type", "text");
+       TN.setAttribute("name", "TaskName");
+       TN.setAttribute("placeholder", "Task Name");
     
-        // Create an input element for date of birth
+        // Create an input element for date of completion
         let DOC = document.createElement("input");
+        DOC.id = 'DOC';
         DOC.setAttribute("type", "date");
         DOC.setAttribute("name", "doc");
         DOC.setAttribute("placeholder", "DOC");
     
-        // Create an input element for emailID
+        // Create an input element for details
         let details = document.createElement("input");
+        details.id = 'details';
         details.setAttribute("type", "text");
         details.setAttribute("name", "details");
         details.setAttribute("placeholder", "Details");
-    
-         // Create an input element for password
-         let PWD = document.createElement("input");
-         PWD.setAttribute("type", "password");
-         PWD.setAttribute("name", "password");
-         PWD.setAttribute("placeholder", "Password");
-    
-          // Create an input element for retype-password
-          let RPWD = document.createElement("input");
-          RPWD.setAttribute("type", "password");
-          RPWD.setAttribute("name", "reTypePassword");
-          RPWD.setAttribute("placeholder", "ReEnter Password");
 
 
-          let br = document.createElement("br"); 
-    
-                   // create a submit button
-                   let s = document.createElement("input");
-                   s.setAttribute("type", "submit");
-                   s.setAttribute("value", "Submit");
-                    
-                   // Append the full name input to the form
-                   formWrapper.appendChild(FN); 
-                    
-                   // Inserting a line break
-                   formWrapper.appendChild(br.cloneNode()); 
-                    
-                   // Append the DOB to the formWrapper
-                   formWrapper.appendChild(DOC); 
-                   formWrapper.appendChild(br.cloneNode()); 
-                    
-                   // Append the emailID to the formWrapper
-                   formWrapper.appendChild(details); 
-                   formWrapper.appendChild(br.cloneNode()); 
-                    
-                   // Append the Password to the formWrapper
-                   formWrapper.appendChild(PWD); 
-                   formWrapper.appendChild(br.cloneNode()); 
-                    
-                   // Append the ReEnterPassword to the formWrapper
-                   formWrapper.appendChild(RPWD); 
-                   formWrapper.appendChild(br.cloneNode()); 
-                    
+        let br = document.createElement("br"); 
+
+        // create a submit button
+        let s = document.createElement("input");
+        s.id = 's';
+                // SUBMIT HERE IS WHAT CAUSES THE PAGE RELOAD, CAN DEAL WITH THAT LATE
+        s.setAttribute("type", "submit");
+        s.setAttribute("value", "Submit");
+        
+        // Append the full name input to the form
+        formWrapper.appendChild(TN); 
+        
+        // Inserting a line break
+        formWrapper.appendChild(br.cloneNode()); 
+        // Inserting a line break
+        formWrapper.appendChild(br.cloneNode()); 
+
+        // Append the emailID to the formWrapper
+        formWrapper.appendChild(details); 
+        formWrapper.appendChild(br.cloneNode());
+
+        // Inserting a line break
+        formWrapper.appendChild(br.cloneNode()); 
+
+        const dateExplainer = document.createElement('div');
+        dateExplainer.classList.add('whitetext');
+        dateExplainer.textContent = 'Choose the date of completion:'
+
+        formWrapper.appendChild(dateExplainer);
+        
+        // Append the DOB to the formWrapper
+        formWrapper.appendChild(DOC); 
+        formWrapper.appendChild(br.cloneNode()); 
+         
+        
+        
 
 
-   priorityDropdown.appendChild(option1);
-   priorityDropdown.appendChild(option2);
-   priorityDropdown.appendChild(option3);
+        priorityDropdown.appendChild(option1);
+        priorityDropdown.appendChild(option2);
+        priorityDropdown.appendChild(option3);
 
-   formWrapper.appendChild(priorityDropdown);
+        formWrapper.appendChild(priorityDropdown);
 
-                      // Append the submit button to the formWrapper
-                      formWrapper.appendChild(s); 
-   
+        // Append the submit button to the formWrapper
+        formWrapper.appendChild(s); 
+        
+
 
 
     

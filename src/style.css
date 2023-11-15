@@ -334,14 +334,20 @@ user-select: none;
 }
 
 #addTaskTitleBar {
-    background-color: blue;
+    background-color: var(--headerColour);
     width: 100%;
     height: 15%;
     font-size: 1.1rem;
     justify-content: center;
     display: flex;
     align-items: center;
+    display: flex;
+    color: white;
 
+}
+
+.whitetext {
+    color: white;
 }
 
 #addTaskContent {
@@ -350,7 +356,20 @@ user-select: none;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: green;
+    background-color: rgb(25, 99, 99);
+}
+
+#closeAddTaskWindow {
+    width: 2rem;
+    height: 2rem;
+    background-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 1rem;
+    border: 2px solid white;
+    color: white;
+    border-radius: 0.1rem;
 }
 
 

@@ -2,7 +2,9 @@ import editIcon from './assets/edit.svg';
 import deleteIcon from './assets/delete.svg'
 
 export default class todoItem {
+  static LastItemNumber = 0;
     constructor(title, description, dueDate, priority, attachedNotes, checked) {
+      this.itemNumber += todoItem.LastItemNumber;
       this.title = title;
       this.description = description;
       this.dueDate = dueDate;
@@ -33,6 +35,10 @@ export default class todoItem {
 
     getChecked() {
       return this.checked;
+    }
+
+    getItemNumber() {
+      return this.itemNumber;
     }
 
     setTitle(title) {
@@ -121,6 +127,11 @@ export default class todoItem {
       deleteSVG.src = deleteIcon;
       deleteSVG.classList.add('svgToDo');
       deleteSVG.classList.add('deleteSVG');
+
+
+      deleteSVG.addEventListener('click', function() {
+        div.remove();
+      });
       //appends
 
       left.appendChild(priorityDiv);
