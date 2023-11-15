@@ -318,6 +318,41 @@ user-select: none;
     border-radius: 0.3rem;
 }
 
+/* add task form */
+
+#addTaskForm {
+    height: 20rem;
+    width: 18rem;
+    z-index: 1;
+    left: 0;
+    right: 0;
+    margin: auto;
+    position: absolute;
+    top: 30%;
+    display: flex;
+    flex-direction: column;
+}
+
+#addTaskTitleBar {
+    background-color: blue;
+    width: 100%;
+    height: 15%;
+    font-size: 1.1rem;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+
+}
+
+#addTaskContent {
+
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: green;
+}
+
 
 
 .main {
@@ -331,6 +366,7 @@ user-select: none;
     margin-right: 2rem;
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 .projTitle {

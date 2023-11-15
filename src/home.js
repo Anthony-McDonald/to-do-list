@@ -1,4 +1,5 @@
 import todoItem from "./todoItem";
+import showTaskForm from "./addTask";
 
 export default function homeMain() {
     const homeMain = document.createElement('div');
@@ -11,6 +12,9 @@ export default function homeMain() {
     addNewToDo.innerText = 'Add a Task'
     addNewToDo.id = 'addTaskButton';
     
+    addNewToDo.addEventListener('click', function() {
+        homeMain.appendChild(showTaskForm());
+    });
 
 
     const title = document.createElement('h1');
