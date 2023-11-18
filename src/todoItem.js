@@ -91,6 +91,14 @@ export default class todoItem {
         checkBox.checked = true;
       }
 
+      checkBox.addEventListener('change', function() {
+        if (this.checked) {
+          this.setChecked('true');
+        } else {
+          this.setChecked('false');
+        }
+      })
+
       checkedDiv.appendChild(checkBox);
       checkedDiv.id = 'checkedDiv';
 

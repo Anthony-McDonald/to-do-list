@@ -1,5 +1,9 @@
 /* Small devices such as large phones (640px and up) */
 @media only screen and (min-width: 40em) {
+    .notemain {
+        grid-auto-columns: repeat(auto-fill, 100%);
+        overflow: scroll;
+    }
 
 }
 
@@ -21,6 +25,11 @@
         display: flex;
     }
 
+    .notemain {
+        grid-template-columns: repeat(3, 33%);
+        overflow: scroll;
+    }
+
 
 
 
@@ -29,14 +38,16 @@
 
 /* Large devices such as laptops (1024px and up) */
 @media only screen and (min-width: 64em) {
+    .notemain {
+        display: grid;
+        grid-template-columns: repeat(4, 25%);
+        overflow: scroll;
+    }
 
 }
 
 /* Largest devices such as desktops (1280px and up) */
 @media only screen and (min-width: 80em) {
-    * {
-        border: 1px solid red;
-    }
 
 }
 
@@ -226,6 +237,27 @@ font-family: 'Oswald';
     font-size: clamp(0.8rem, 2.5vw, 1rem);
 }
 
+#noteItem {
+    background-color: lightcyan;
+    border-radius: 0.3rem;
+    margin: 0.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: column;
+    flex-shrink: 0.5;
+    font-size: 3vw;
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
+}
+
+#top {
+    background-color: rgb(23, 148, 148);
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    border-radius: 0.2rem;
+}
+
 #left {
     display: flex;
     height: 100%;
@@ -309,6 +341,7 @@ user-select: none;
 #subpageTitleBar {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 1rem;
 }
 
 #addTaskButton {
@@ -386,6 +419,13 @@ user-select: none;
     display: flex;
     flex-direction: column;
     position: relative;
+}
+
+.notemain {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 200px);
+    overflow: scroll;
+    justify-content: center;
 }
 
 .projTitle {

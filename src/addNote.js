@@ -1,5 +1,4 @@
-
-export default function showTaskForm() {
+export default function showNoteForm() {
     console.log('task form being shown');
 
     const divToShow = document.createElement('div');
@@ -11,12 +10,12 @@ export default function showTaskForm() {
 
     divTitle.textContent = 'Please fill out the information below'
 
-    const closeAddTask = document.createElement('div');
-    closeAddTask.id = 'closeAddTaskWindow';
-    closeAddTask.textContent = 'X';
-    divTitle.appendChild(closeAddTask);
+    const closeAddNote = document.createElement('div');
+    closeAddNote.id = 'closeAddTaskWindow';
+    closeAddNote.textContent = 'X';
+    divTitle.appendChild(closeAddNote);
 
-    closeAddTask.addEventListener('click', function() {
+    closeAddNote.addEventListener('click', function() {
         divToShow.remove();
     })
 
@@ -30,35 +29,17 @@ export default function showTaskForm() {
 
    formWrapper.id = 'formID';
 
-   const priorityDropdown = document.createElement('select');
-   priorityDropdown.id = 'priority'; 
-
-   const option1 = document.createElement('option');
-   option1.textContent = 'Low'
-   option1.value = 'low';
-   const option2 = document.createElement('option');
-   option2.textContent = 'Medium';
-   option2.value = 'medium';
-   const option3 = document.createElement('option');
-   option3.textContent = 'High';
-   option3.value = 'high';
    const submitButton = document.createElement('input');
    submitButton.type = 'submit';
    
-       // Create an input element for Task Name
+       // Create an input element for Note Name
        let TN = document.createElement("input");
        TN.id = 'TN';
        TN.setAttribute("type", "text");
-       TN.setAttribute("name", "TaskName");
-       TN.setAttribute("placeholder", "Task Name");
+       TN.setAttribute("name", "NoteName");
+       TN.setAttribute("placeholder", "Note Name");
        TN.setAttribute("maxlength", "15");
-    
-        // Create an input element for date of completion
-        let DOC = document.createElement("input");
-        DOC.id = 'DOC';
-        DOC.setAttribute("type", "date");
-        DOC.setAttribute("name", "doc");
-        DOC.setAttribute("placeholder", "DOC");
+
     
         // Create an input element for details
         let details = document.createElement("input");
@@ -91,27 +72,6 @@ export default function showTaskForm() {
 
         // Inserting a line break
         formWrapper.appendChild(br.cloneNode()); 
-
-        const dateExplainer = document.createElement('div');
-        dateExplainer.classList.add('whitetext');
-        dateExplainer.textContent = 'Choose the date of completion:'
-
-        formWrapper.appendChild(dateExplainer);
-        
-        // Append the DOB to the formWrapper
-        formWrapper.appendChild(DOC); 
-        formWrapper.appendChild(br.cloneNode()); 
-         
-        
-        
-
-
-        priorityDropdown.appendChild(option1);
-        priorityDropdown.appendChild(option2);
-        priorityDropdown.appendChild(option3);
-
-        formWrapper.appendChild(priorityDropdown);
-
         // Append the submit button to the formWrapper
         formWrapper.appendChild(s); 
         
