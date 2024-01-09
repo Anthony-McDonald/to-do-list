@@ -72,7 +72,7 @@ export default function showTaskForm() {
         let s = document.createElement("input");
         s.id = 's';
                 // SUBMIT HERE IS WHAT CAUSES THE PAGE RELOAD, CAN DEAL WITH THAT LATE
-        s.setAttribute("type", "submit");
+        s.setAttribute("type", "button");
         s.setAttribute("value", "Submit");
         
         // Append the full name input to the form
