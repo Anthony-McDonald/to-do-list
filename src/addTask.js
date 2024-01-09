@@ -42,8 +42,6 @@ export default function showTaskForm() {
    const option3 = document.createElement('option');
    option3.textContent = 'High';
    option3.value = 'high';
-   const submitButton = document.createElement('input');
-   submitButton.type = 'submit';
    
        // Create an input element for Task Name
        let TN = document.createElement("input");

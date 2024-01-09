@@ -28,9 +28,6 @@ export default function showNoteForm() {
    const formWrapper = document.createElement('form');
 
    formWrapper.id = 'formID';
-
-   const submitButton = document.createElement('input');
-   submitButton.type = 'submit';
    
        // Create an input element for Note Name
        let TN = document.createElement("input");
