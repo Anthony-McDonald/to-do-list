@@ -74,6 +74,20 @@ export default function showTaskForm() {
                 // SUBMIT HERE IS WHAT CAUSES THE PAGE RELOAD, CAN DEAL WITH THAT LATE
         s.setAttribute("type", "button");
         s.setAttribute("value", "Submit");
+
+        s.addEventListener("click", submitHandler);
+        function submitHandler() {
+            // localStorage.setItem("itemID", localStorage.getItem("itemID") + "testing");
+            if (localStorage.getItem("tItemID") == null) {
+                console.log("no item with ID itemID, creating");
+                localStorage.setItem("tItemID", "0" );
+            } else {
+                console.log("item present, incrementing");
+                localStorage.setItem("tItemID", parseInt(localStorage.getItem("tItemID")) + 1);
+                // localStorage.removeItem("tItemID");
+            }
+            
+        }
         
         // Append the full name input to the form
         formWrapper.appendChild(TN); 
