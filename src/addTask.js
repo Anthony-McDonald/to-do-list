@@ -1,8 +1,6 @@
 import todoItem from "./todoItem";
 
-export default function showTaskForm() {
-    console.log(JSON.parse(localStorage.getItem("4")));
-    console.log('task form being shown');
+export default function showTaskForm(contentDiv) {
 
     const divToShow = document.createElement('div');
     divToShow.id = 'addTaskForm';
@@ -91,10 +89,17 @@ export default function showTaskForm() {
                     console.log("item present, incrementing");
                     localStorage.setItem("tItemID", parseInt(localStorage.getItem("tItemID")) + 1);
                     // localStorage.removeItem("tItemID");
-                }
 
+                }
+                let lastEntry = localStorage.getItem("tItemID");
                 localStorage.setItem(localStorage.getItem("tItemID"), JSON.stringify(new todoItem(localStorage.getItem("tItemID"), TN.value, details.value, DOC.value, priorityDropdown.value, "", false )));
                 closeAddTask.click()
+                let jsonObject = JSON.parse(localStorage.getItem(lastEntry))
+                console.log(jsonObject);
+                let nextEntry = new todoItem(jsonObject.itemNumber, jsonObject.title, jsonObject.description, jsonObject.dueDate,jsonObject.priority,jsonObject.attachedNotes);
+                contentDiv.appendChild(nextEntry.returnDiv());
+
+                
 
 
             } else {

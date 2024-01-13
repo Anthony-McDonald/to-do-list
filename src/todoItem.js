@@ -2,7 +2,6 @@ import editIcon from './assets/edit.svg';
 import deleteIcon from './assets/delete.svg'
 
 export default class todoItem {
-  static LastItemNumber = 0;
     constructor(itemNumber, title, description, dueDate, priority, attachedNotes, checked) {
       this.itemNumber = itemNumber;
       this.title = title;
@@ -91,13 +90,13 @@ export default class todoItem {
         checkBox.checked = true;
       }
 
-      checkBox.addEventListener('change', function() {
-        if (this.checked) {
-          this.setChecked('true');
+      checkBox.addEventListener('change', () => {
+        if (checkBox.checked) {
+          this.setChecked(true);
         } else {
-          this.setChecked('false');
+          this.setChecked(false);
         }
-      })
+      });
 
       checkedDiv.appendChild(checkBox);
       checkedDiv.id = 'checkedDiv';
@@ -136,8 +135,15 @@ export default class todoItem {
       deleteSVG.classList.add('svgToDo');
       deleteSVG.classList.add('deleteSVG');
 
+      console.log(this.getItemNumber())
 
-      deleteSVG.addEventListener('click', function() {
+
+      // deleteSVG.addEventListener('click', function() {
+      //   console.log(this.getItemNumber())
+      //   div.remove();
+      // });
+      deleteSVG.addEventListener('click', () => {
+        localStorage.removeItem(this.getItemNumber());
         div.remove();
       });
       //appends
