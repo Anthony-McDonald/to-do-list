@@ -3,8 +3,8 @@ import deleteIcon from './assets/delete.svg'
 
 export default class todoItem {
   static LastItemNumber = 0;
-    constructor(title, description, dueDate, priority, attachedNotes, checked) {
-      this.itemNumber += todoItem.LastItemNumber;
+    constructor(itemNumber, title, description, dueDate, priority, attachedNotes, checked) {
+      this.itemNumber = itemNumber;
       this.title = title;
       this.description = description;
       this.dueDate = dueDate;

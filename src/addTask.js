@@ -1,5 +1,7 @@
+import todoItem from "./todoItem";
 
 export default function showTaskForm() {
+    console.log(JSON.parse(localStorage.getItem("4")));
     console.log('task form being shown');
 
     const divToShow = document.createElement('div');
@@ -19,6 +21,7 @@ export default function showTaskForm() {
     closeAddTask.addEventListener('click', function() {
         divToShow.remove();
     })
+    
 
 
     const divContent = document.createElement('div');
@@ -77,15 +80,34 @@ export default function showTaskForm() {
 
         s.addEventListener("click", submitHandler);
         function submitHandler() {
-            // localStorage.setItem("itemID", localStorage.getItem("itemID") + "testing");
-            if (localStorage.getItem("tItemID") == null) {
-                console.log("no item with ID itemID, creating");
-                localStorage.setItem("tItemID", "0" );
+
+            if (boxesFilled(TN, DOC, details)) {
+
+                // localStorage.setItem("itemID", localStorage.getItem("itemID") + "testing");
+                if (localStorage.getItem("tItemID") == null) {
+                    console.log("no item with ID itemID, creating");
+                    localStorage.setItem("tItemID", "0" );
+                } else {
+                    console.log("item present, incrementing");
+                    localStorage.setItem("tItemID", parseInt(localStorage.getItem("tItemID")) + 1);
+                    // localStorage.removeItem("tItemID");
+                }
+
+                localStorage.setItem(localStorage.getItem("tItemID"), JSON.stringify(new todoItem(localStorage.getItem("tItemID"), TN.value, details.value, DOC.value, priorityDropdown.value, "", false )));
+                closeAddTask.click()
+
+
             } else {
-                console.log("item present, incrementing");
-                localStorage.setItem("tItemID", parseInt(localStorage.getItem("tItemID")) + 1);
-                // localStorage.removeItem("tItemID");
+                alert("please fill all boxes before submitting");
             }
+
+function boxesFilled(titleName, dateCreated, details) {
+    if (titleName.value.length == 0 || dateCreated.value.length == 0 || details.value.length == 0) {
+        return false;
+    }
+    return true;
+}
+
             
         }
         

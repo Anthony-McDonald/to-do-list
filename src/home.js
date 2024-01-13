@@ -23,8 +23,8 @@ export default function homeMain() {
 
     const contentDiv = document.createElement('div');
 
-    const exampleToDo = new todoItem('brush teeth', 'with toothpaste', '15/06/2024', 'medium', null, true,);
-    const exampleToDo2 = new todoItem('brush teeth', 'with toothpaste', '15/06/2024', 'high', null, false,);
+    const exampleToDo = new todoItem(1, 'brush teeth', 'with toothpaste', '15/06/2024', 'medium', null, true,);
+    const exampleToDo2 = new todoItem(2, 'brush teeth', 'with toothpaste', '15/06/2024', 'high', null, false,);
     const exampleToDo3 = new todoItem('brush teeth', 'with toothpaste', '15/06/2024', 'high', null, false,);
     const exampleToDo4 = new todoItem('brush teeth', 'with toothpaste', '15/06/2024', 'high', null, false,);
 
