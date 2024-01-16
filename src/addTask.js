@@ -1,6 +1,6 @@
 import todoItem from "./todoItem";
 
-export default function showTaskForm(contentDiv) {
+export default function showTaskForm(contentDiv, page) {
 
     const divToShow = document.createElement('div');
     divToShow.id = 'addTaskForm';
@@ -66,6 +66,8 @@ export default function showTaskForm(contentDiv) {
         details.setAttribute("name", "details");
         details.setAttribute("placeholder", "Details");
 
+        
+
 
         let br = document.createElement("br"); 
 
@@ -92,11 +94,12 @@ export default function showTaskForm(contentDiv) {
 
                 }
                 let lastEntry = localStorage.getItem("tItemID");
-                localStorage.setItem(localStorage.getItem("tItemID"), JSON.stringify(new todoItem(localStorage.getItem("tItemID"), TN.value, details.value, DOC.value, priorityDropdown.value, "", false )));
+                console.log("page is equal to " + page);
+                localStorage.setItem(localStorage.getItem("tItemID"), JSON.stringify(new todoItem(localStorage.getItem("tItemID"), TN.value, details.value, DOC.value, priorityDropdown.value, "", false, page )));
                 closeAddTask.click()
                 let jsonObject = JSON.parse(localStorage.getItem(lastEntry))
                 console.log(jsonObject);
-                let nextEntry = new todoItem(jsonObject.itemNumber, jsonObject.title, jsonObject.description, jsonObject.dueDate,jsonObject.priority,jsonObject.attachedNotes);
+                let nextEntry = new todoItem(jsonObject.itemNumber, jsonObject.title, jsonObject.description, jsonObject.dueDate,jsonObject.priority,jsonObject.attachedNotes, jsonObject.page);
                 contentDiv.appendChild(nextEntry.returnDiv());
 
                 

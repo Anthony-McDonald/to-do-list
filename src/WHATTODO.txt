@@ -4,5 +4,4 @@ create the back end in general, should be individual to every page,
 different back end should be generated for every project as well on the side
 should one be added.
 
-notebox page, use gridbox and just have the add button add another div within
-the grid box;
+For individualising tasks, add a task value to the noteItem and use that as your parser when generating ids on pageload.

@@ -2,7 +2,7 @@ import editIcon from './assets/edit.svg';
 import deleteIcon from './assets/delete.svg'
 
 export default class todoItem {
-    constructor(itemNumber, title, description, dueDate, priority, attachedNotes, checked) {
+    constructor(itemNumber, title, description, dueDate, priority, attachedNotes, checked, page) {
       this.itemNumber = itemNumber;
       this.title = title;
       this.description = description;
@@ -10,6 +10,7 @@ export default class todoItem {
       this.priority = priority;
       this.attachedNotes = attachedNotes;
       this.checked = checked;
+      this.page = page;
     }
 
     getTitle() {
@@ -40,6 +41,10 @@ export default class todoItem {
       return this.itemNumber;
     }
 
+    getPage() {
+      return this.page;
+    }
+
     setTitle(title) {
       this.title = title;
     }
@@ -62,6 +67,10 @@ export default class todoItem {
 
     setChecked(checked) {
       this.checked = checked;
+    }
+
+    setPage(page) {
+      this.page = page;
     }
 
     returnDiv() {
