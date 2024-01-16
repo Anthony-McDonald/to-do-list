@@ -21,7 +21,7 @@ export default function noteMain() {
     const contentDiv = document.createElement('div');
     contentDiv.classList.add('notemain');
 
-    const exampleToDo = new noteItem('brush teeth', 'with toothpaste toothpaste and more toothpaste really just all of the toothpaste');
+    const exampleToDo = new noteItem(1, 'brush teeth', 'with toothpaste toothpaste and more toothpaste really just all of the toothpaste');
 
     addNewNote.addEventListener('click', function() {
         noteMain.appendChild(showNoteForm());

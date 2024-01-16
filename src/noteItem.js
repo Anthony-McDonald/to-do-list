@@ -4,8 +4,8 @@ import showNoteForm from './addNote';
 
 export default class noteItem {
   static LastItemNumber = 0;
-    constructor(title, description) {
-      this.noteNumber += noteItem.LastItemNumber;
+    constructor(itemNumber, title, description) {
+      this.itemNumber = itemNumber;
       this.title = title;
       this.description = description;
     }
@@ -66,12 +66,10 @@ export default class noteItem {
       deleteSVG.classList.add('svgToDo');
       deleteSVG.classList.add('deleteSVG');
 
-
-      deleteSVG.addEventListener('click', function() {
+      deleteSVG.addEventListener('click', () => {
+        localStorage.removeItem(this.getItemNumber());
         div.remove();
       });
-      //appends
-
       top.appendChild(titleDiv);
 
       top.appendChild(editDiv);
