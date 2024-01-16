@@ -1,7 +1,7 @@
-make ticking off todos, reflect in the back end
-
 create the back end in general, should be individual to every page,
 different back end should be generated for every project as well on the side
 should one be added.
 
-For individualising tasks, add a task value to the noteItem and use that as your parser when generating ids on pageload.
+make indvidual project pages work as well as the ability to add new ones
+
+make notes work with backend

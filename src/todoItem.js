@@ -94,17 +94,25 @@ export default class todoItem {
       const checkBox = document.createElement('input');
       checkBox.id = 'checkbox';
       checkBox.type = 'checkbox';
+      let jsonObject = JSON.parse(localStorage.getItem(this.getItemNumber()));
       
       if (this.getChecked() == true) {
         checkBox.checked = true;
       }
-
       checkBox.addEventListener('change', () => {
         if (checkBox.checked) {
+          console.log("setting checked to true in the object for itemid " + this.getItemNumber())
           this.setChecked(true);
+          jsonObject.checked = true;
+          console.log(jsonObject.checked);
+
         } else {
+          console.log("setting it to false");
           this.setChecked(false);
+          jsonObject.checked = false;
+          console.log(jsonObject.checked);
         }
+        localStorage.setItem(this.getItemNumber(), JSON.stringify(new todoItem(jsonObject.itemNumber, jsonObject.title, jsonObject.description, jsonObject.dueDate,jsonObject.priority,jsonObject.attachedNotes, jsonObject.checked,jsonObject.page)));
       });
 
       checkedDiv.appendChild(checkBox);

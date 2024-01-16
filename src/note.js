@@ -22,17 +22,6 @@ export default function noteMain() {
     contentDiv.classList.add('notemain');
 
     const exampleToDo = new noteItem('brush teeth', 'with toothpaste toothpaste and more toothpaste really just all of the toothpaste');
-    const exampleToDo2 = new noteItem('brush teeth', 'with toothpaste');
-    const exampleToDo3 = new noteItem('brush teeth', 'with toothpaste');
-    const exampleToDo4 = new noteItem('brush teeth', 'with toothpaste');
-    const exampleToD5 = new noteItem('brush teeth', 'with toothpaste');
-    const exampleToDo6 = new noteItem('brush teeth', 'with toothpaste');
-    const exampleToDo7 = new noteItem('brush teeth', 'with toothpaste');
-    const exampleToDo8 = new noteItem('brush teeth', 'with toothpaste');
-    const exampleToDo9 = new noteItem('brush teeth', 'with toothpaste');
-    const exampleToDo10 = new noteItem('brush teeth', 'with toothpaste');
-    const exampleToDo11 = new noteItem('brush teeth', 'with toothpaste');
-    const exampleToDo12 = new noteItem('brush teeth', 'with toothpaste');
 
     addNewNote.addEventListener('click', function() {
         noteMain.appendChild(showNoteForm());
@@ -50,21 +39,13 @@ export default function noteMain() {
         }
     });
 
+    
+
 
 
 
     contentDiv.appendChild(exampleToDo.returnDiv());
-    contentDiv.appendChild(exampleToDo2.returnDiv());
-    contentDiv.appendChild(exampleToDo3.returnDiv());
-    contentDiv.appendChild(exampleToDo4.returnDiv());
-    contentDiv.appendChild(exampleToD5.returnDiv());
-    contentDiv.appendChild(exampleToDo6.returnDiv());
-    contentDiv.appendChild(exampleToDo7.returnDiv());
-    contentDiv.appendChild(exampleToDo8.returnDiv());
-    contentDiv.appendChild(exampleToDo9.returnDiv());
-    contentDiv.appendChild(exampleToDo10.returnDiv());
-    contentDiv.appendChild(exampleToDo11.returnDiv());
-    contentDiv.appendChild(exampleToDo12.returnDiv());
+
 
     titleDiv.appendChild(title);
     titleDiv.appendChild(addNewNote);
