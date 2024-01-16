@@ -109,8 +109,8 @@ export default function showTaskForm(contentDiv, page) {
                 alert("please fill all boxes before submitting");
             }
 
-function boxesFilled(titleName, dateCreated, details) {
-    if (titleName.value.length == 0 || dateCreated.value.length == 0 || details.value.length == 0) {
+function boxesFilled(titleName, details) {
+    if (titleName.value.length == 0 || details.value.length == 0) {
         return false;
     }
     return true;

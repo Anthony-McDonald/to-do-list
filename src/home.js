@@ -18,6 +18,7 @@ export default function homeMain() {
 
     title.id = 'subTitle';
 
+
     const contentDiv = document.createElement('div');
 
     // constructor for todoitem:(itemNumber, title, description, dueDate, priority, attachedNotes, checked, page) 

@@ -14,7 +14,7 @@ export default function weekMain() {
 
     const title = document.createElement('h1');
 
-    title.innerText = 'Home';
+    title.innerText = 'Week';
 
     title.id = 'subTitle';
 

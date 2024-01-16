@@ -1,4 +1,6 @@
-export default function showNoteForm() {
+import noteItem from "./noteItem";
+
+export default function showNoteForm(contentDiv, page) {
     console.log('task form being shown');
 
     const divToShow = document.createElement('div');
@@ -52,8 +54,47 @@ export default function showNoteForm() {
         let s = document.createElement("input");
         s.id = 's';
                 // SUBMIT HERE IS WHAT CAUSES THE PAGE RELOAD, CAN DEAL WITH THAT LATE
-        s.setAttribute("type", "submit");
+        s.setAttribute("type", "button");
         s.setAttribute("value", "Submit");
+
+        s.addEventListener("click", submitHandler);
+        function submitHandler() {
+            if (boxesFilled(TN, details)) {
+
+                // localStorage.setItem("itemID", localStorage.getItem("itemID") + "testing");
+                if (localStorage.getItem("tItemID") == null) {
+                    console.log("no item with ID itemID, creating");
+                    localStorage.setItem("tItemID", "0" );
+                } else {
+                    console.log("item present, incrementing");
+                    localStorage.setItem("tItemID", parseInt(localStorage.getItem("tItemID")) + 1);
+                    // localStorage.removeItem("tItemID");
+
+                }
+                let lastEntry = localStorage.getItem("tItemID");
+                console.log("page is equal to " + page);
+                localStorage.setItem(localStorage.getItem("tItemID"), JSON.stringify(new noteItem(localStorage.getItem("tItemID"), TN.value, details.value)));
+                closeAddNote.click()
+                let jsonObject = JSON.parse(localStorage.getItem(lastEntry))
+                console.log(jsonObject);
+                let nextEntry = new noteItem(jsonObject.itemNumber, jsonObject.title, jsonObject.description);
+                console.log(nextEntry);
+                contentDiv.appendChild(nextEntry.returnDiv());
+
+                
+
+
+            } else {
+                alert("please fill all boxes before submitting");
+            }
+        }
+
+        function boxesFilled(titleName, details) {
+            if (titleName.value.length == 0 || details.value.length == 0) {
+                return false;
+            }
+            return true;
+        }
         
         // Append the full name input to the form
         formWrapper.appendChild(TN); 

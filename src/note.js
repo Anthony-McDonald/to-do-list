@@ -24,21 +24,34 @@ export default function noteMain() {
     const exampleToDo = new noteItem(1, 'brush teeth', 'with toothpaste toothpaste and more toothpaste really just all of the toothpaste');
 
     addNewNote.addEventListener('click', function() {
-        noteMain.appendChild(showNoteForm());
+        noteMain.appendChild(showNoteForm(contentDiv, "notes"));
 
-        let form = document.getElementById('formID');
-        form.onsubmit = function(e) {
-            let title = document.getElementById('TN').value;
-            let details = document.getElementById('details').value;
+        // let form = document.getElementById('formID');
+        // form.onsubmit = function(e) {
+        //     let title = document.getElementById('TN').value;
+        //     let details = document.getElementById('details').value;
 
-            if (!title == "" && !details == "") {
-                contentDiv.appendChild(new noteItem(title,details).returnDiv());
-            } else {
-                alert('please fill all fields to generate a task');
-            }
-        }
+        //     // if (!title == "" && !details == "") {
+        //     //     contentDiv.appendChild(new noteItem(title,details).returnDiv());
+        //     // } else {
+        //     //     alert('please fill all fields to generate a task');
+        //     // }
+        // }
     });
 
+    
+    let idsInStorage = localStorage.getItem("tItemID");
+    for (let i = -1; i < parseInt(idsInStorage); i++) {
+        console.log("entry")
+        
+        let jsonObject = JSON.parse(localStorage.getItem(i + 1))
+        if (jsonObject != null && jsonObject.page == null) {
+            console.log(jsonObject);
+            let nextEntry = new noteItem(jsonObject.itemNumber, jsonObject.title, jsonObject.description);
+            contentDiv.appendChild(nextEntry.returnDiv());
+        }
+
+    };
     
 
 

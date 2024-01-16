@@ -14,7 +14,7 @@ export default function todayMain() {
 
     const title = document.createElement('h1');
 
-    title.innerText = 'Home';
+    title.innerText = 'Today';
 
     title.id = 'subTitle';
 

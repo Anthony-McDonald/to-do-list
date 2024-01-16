@@ -3,7 +3,6 @@ import deleteIcon from './assets/delete.svg'
 import showNoteForm from './addNote';
 
 export default class noteItem {
-  static LastItemNumber = 0;
     constructor(itemNumber, title, description) {
       this.itemNumber = itemNumber;
       this.title = title;
