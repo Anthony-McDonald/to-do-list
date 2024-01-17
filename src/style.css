@@ -223,18 +223,53 @@ font-family: 'Oswald';
 
 /* todoitem ids  */
 
-#toDoItem {
+#topFormat  {
     background-color: lightcyan;
     height: 2rem;
     width: 100%;
     border-radius: 0.3rem;
-    margin: 0.3rem;
+    margin-bottom: 0.3rem;
+    margin-top: 0.3rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-shrink: 0.5;
     font-size: 3vw;
     font-size: clamp(0.8rem, 2.5vw, 1rem);
+}
+
+#bottomFormat{
+    background-color: lightcyan;
+    width: 92%;
+    height: 2rem;
+    border-radius: 0.3rem;
+    margin-left: 1rem;
+    margin-right: 0.8rem;
+    text-align: start;
+    padding-left: 1rem;
+    justify-content: start;
+    align-items: center;
+    display: flex;
+
+}
+
+#descriptionTitle {
+    color: grey;
+    font-weight:bolder;
+    font-size: 0.9rem;
+    margin-right: 1rem;
+}
+
+#descriptionContent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+#todoFormat {
+    display: flex;
+    flex-direction: column;
 }
 
 #noteItem {
@@ -393,8 +428,8 @@ user-select: none;
 }
 
 #closeAddTaskWindow {
-    width: 2rem;
-    height: 2rem;
+    width: 1.5rem;
+    height: 1.5rem;
     background-color: red;
     display: flex;
     justify-content: center;
@@ -403,6 +438,12 @@ user-select: none;
     border: 2px solid white;
     color: white;
     border-radius: 0.1rem;
+}
+
+#detailsPopup {
+    border: 1px solid red;
+    height: 5rem;
+    width: 15rem;
 }
 
 

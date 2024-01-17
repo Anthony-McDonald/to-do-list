@@ -74,14 +74,49 @@ export default class todoItem {
     }
 
     returnDiv() {
+      let jsonObject = JSON.parse(localStorage.getItem(this.getItemNumber()))
       const div = document.createElement('div');
 
-      div.id = 'toDoItem';
+      div.id = 'todoFormat';
+
+      const top = document.createElement('div');
+      top.id = 'topFormat'
+
 
       const left = document.createElement('div');
       left.id = 'left';
       const right = document.createElement('div');
       right.id = 'right';
+
+      const bottom = document.createElement('div');
+      bottom.id = 'bottomFormat';
+
+      const bottomLeft = document.createElement('div');
+      bottomLeft.innerText = 'DETAILS: '
+
+      let bottomRight = document.createElement('div');
+      bottomRight.innerText = jsonObject.description;
+      bottom.appendChild(bottomLeft);
+      bottomLeft.id = 'descriptionTitle';
+      bottomRight.id = 'descriptionContent';
+      bottom.appendChild(bottomRight); 
+      let closeDiv = document.createElement('div');
+      closeDiv.innerText = "X";
+      closeDiv.id = 'closeAddTaskWindow';
+      bottom.classList.add('hide');
+
+      closeDiv.addEventListener('click', () => {
+        console.log("clicked on the close div");
+        // closeDiv.parentElement.parentElement.remove();
+        bottom.classList.add('hide');
+
+
+      })
+
+      bottomRight.appendChild(closeDiv);
+
+      // bottom.innerText = jsonObject.title;
+
 
       //prioDiv
       const priorityDiv = document.createElement('div');
@@ -94,7 +129,6 @@ export default class todoItem {
       const checkBox = document.createElement('input');
       checkBox.id = 'checkbox';
       checkBox.type = 'checkbox';
-      let jsonObject = JSON.parse(localStorage.getItem(this.getItemNumber()));
       
       if (this.getChecked() == true) {
         checkBox.checked = true;
@@ -128,6 +162,13 @@ export default class todoItem {
       detailsDiv.id = 'detailsDiv';
       detailsDiv.innerText = 'DETAILS';
 
+      detailsDiv.addEventListener('click', () => {
+        console.log("clicked on a details div");
+        bottom.classList.remove('hide');
+
+
+      })
+
 
       //dateDiv
       const dateDiv = document.createElement('div');
@@ -159,6 +200,7 @@ export default class todoItem {
       //   console.log(this.getItemNumber())
       //   div.remove();
       // });
+
       deleteSVG.addEventListener('click', () => {
         localStorage.removeItem(this.getItemNumber());
         div.remove();
@@ -177,8 +219,12 @@ export default class todoItem {
       right.appendChild(deleteSVG);
 
   
-      div.appendChild(left);
-      div.appendChild(right);
+      top.appendChild(left);
+      top.appendChild(right)
+      // div.appendChild(left);
+      // div.appendChild(right);
+      div.appendChild(top);
+      div.appendChild(bottom);
 
       return div;
   }

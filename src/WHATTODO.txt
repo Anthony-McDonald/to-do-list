@@ -4,4 +4,8 @@ should one be added.
 
 make indvidual project pages work as well as the ability to add new ones
 
-make notes work with backend
+make a details box that pops up on details button press
+
+make an edit window that pops up on edit button press, can just be a copy of the current divs except with prefilled templates perhaps
+
+Make sidebar icons show some sort of obivousness that theyve been clicked, could be colour based

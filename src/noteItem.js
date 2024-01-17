@@ -17,6 +17,10 @@ export default class noteItem {
     return this.description;
     }
 
+    getItemNumber() {
+      return this.itemNumber;
+    }
+
     setTitle(title) {
         this.title = title;
       }
@@ -24,6 +28,10 @@ export default class noteItem {
       setDescription(description) {
         this.description = description;
       }
+
+    setItemNumber(itemNumber) {
+      this.itemNumber = itemNumber;
+    }
 
     returnDiv() {
       const div = document.createElement('div');
