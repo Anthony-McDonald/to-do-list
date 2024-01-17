@@ -438,6 +438,7 @@ user-select: none;
     border: 2px solid white;
     color: white;
     border-radius: 0.1rem;
+    user-select: none;
 }
 
 #detailsPopup {
