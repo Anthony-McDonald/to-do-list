@@ -75,6 +75,17 @@ export default class todoItem {
 
     returnDiv(contentDiv) {
       let jsonObject = JSON.parse(localStorage.getItem(this.getItemNumber()))
+
+      const exampleToDo = new todoItem(1,'brush teeth', 'with toothpaste', '15/06/2024', 'medium', "",false, "home");
+      const exampleToDo1 = new todoItem(2,'brush teeth', 'with toothpaste', '15/06/2024', 'medium', "",false, "today");
+      const exampleToDo2 = new todoItem(3,'brush teeth', 'with toothpaste', '15/06/2024', 'medium', "",false, "week");
+  
+      if (jsonObject == null) {
+        console.log('code runs');
+        localStorage.setItem('0', JSON.stringify(exampleToDo));
+        localStorage.setItem('1', JSON.stringify(exampleToDo1));
+        localStorage.setItem('2', JSON.stringify(exampleToDo2));
+      }
       const div = document.createElement('div');
 
       div.id = 'todoFormat';

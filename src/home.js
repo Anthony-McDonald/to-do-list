@@ -24,6 +24,9 @@ export default function homeMain() {
     // constructor for todoitem:(itemNumber, title, description, dueDate, priority, attachedNotes, checked, page) 
 
     const exampleToDo = new todoItem(1,'brush teeth', 'with toothpaste', '15/06/2024', 'medium', "",false, "home");
+
+
+
     addNewToDo.addEventListener('click', function() {
         homeMain.appendChild(showTaskForm(contentDiv, "home"));
         
