@@ -1,5 +1,5 @@
 make indvidual project pages work as well as the ability to add new ones
 
-make an edit window that pops up on edit button press, can just be a copy of the current divs except with prefilled templates perhaps
+Grey out projects on click like elsewhere
 
-Make sidebar icons show some sort of obivousness that theyve been clicked, could be colour based - Just have to do it to projectbox now when out
+make an edit window that pops up on edit button press, can just be a copy of the current divs except with prefilled templates perhaps

@@ -187,7 +187,24 @@ export default class todoItem {
       // ------------------------------------
       let editBox = document.createElement('div');
       editBox.classList.add('editBox');
-      editBox.innerText = "test";
+
+      let editBoxTop = document.createElement('div');
+      editBoxTop.id = 'editBoxTop';
+
+      let editBoxTitle = document.createElement('div');
+      editBoxTitle.innerText = 'Editing...'
+      let editBoxClose = document.createElement('div');
+      editBoxClose.id = 'closeAddTaskWindow';
+      editBoxClose.innerText = 'X';
+
+      editBoxTop.appendChild(editBoxTitle);
+      editBoxTop.appendChild(editBoxClose);
+
+
+      let editBoxBottom = document.createElement('div');
+
+      editBox.appendChild(editBoxTop);
+      editBox.appendChild(editBoxBottom);
 
       //-------------------------------------
 

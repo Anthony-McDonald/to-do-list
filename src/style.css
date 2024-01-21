@@ -142,7 +142,7 @@ font-family: 'Oswald';
 .homesidebar {
     display: none;
     background-color: var(--headerColour);
-    border: black solid 1px;
+    /* border-right: black solid 1px; */
     height: 100%;
     width: 18rem;
     margin-right: 2rem;
@@ -378,15 +378,35 @@ user-select: none;
 #editDiv {
 -webkit-user-select: none;
 user-select: none;
+
 }
 
 .editBox {
     height: 10rem;
     width: 20rem;
-    background-color: red;
+    background-color: green;
     position: absolute;
     left: 40%;
     top: 30%;
+    border-radius: 0.3rem;
+}
+
+#editBoxTop {
+    background-color: rgb(23, 148, 148);
+    display: flex;
+    justify-content: space-between;
+    padding: 0.2rem;
+    padding-left: 1rem;
+    user-select: none;
+    -webkit-user-select: none;
+    color: white;
+    align-items: center;
+    border-radius: 0.3rem 0.3rem 0 0;
+
+}
+
+#editBoxClose {
+
 }
 
 #deleteDiv {
@@ -424,7 +444,7 @@ user-select: none;
 /* add task form */
 
 #addTaskForm {
-    height: 20rem;
+    height: 15rem;
     width: 18rem;
     z-index: 1;
     left: 0;
@@ -439,13 +459,14 @@ user-select: none;
 #addTaskTitleBar {
     background-color: var(--headerColour);
     width: 100%;
-    height: 15%;
+    height: 20%;
     font-size: 1.1rem;
     justify-content: center;
     display: flex;
     align-items: center;
     display: flex;
     color: white;
+    border-radius: 0.3rem 0.3rem 0 0;
 
 }
 
@@ -454,12 +475,13 @@ user-select: none;
 }
 
 #addTaskContent {
-
+    border-radius: 0 0 0.3rem 0.3rem;
     padding: 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: rgb(25, 99, 99);
+    height: 80%;
 }
 
 #closeAddTaskWindow {
