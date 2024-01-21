@@ -73,7 +73,7 @@ export default class todoItem {
       this.page = page;
     }
 
-    returnDiv() {
+    returnDiv(contentDiv) {
       let jsonObject = JSON.parse(localStorage.getItem(this.getItemNumber()))
       const div = document.createElement('div');
 
@@ -94,28 +94,31 @@ export default class todoItem {
       const bottomLeft = document.createElement('div');
       bottomLeft.innerText = 'DETAILS: '
 
-      let bottomRight = document.createElement('div');
-      bottomRight.innerText = jsonObject.description;
-      bottom.appendChild(bottomLeft);
+      const bottomRight = document.createElement('div');
+      
+
+      // bottomRight.innerText = jsonObject.description;
       bottomLeft.id = 'descriptionTitle';
-      bottomRight.id = 'descriptionContent';
-      bottom.appendChild(bottomRight); 
+      bottom.appendChild(bottomLeft);
+      bottom.appendChild(bottomRight);
+      let desc = document.createElement('h4');
+      desc.innerText = jsonObject.description;
+      desc.id = 'desc';
+      bottomLeft.appendChild(desc) 
       let closeDiv = document.createElement('div');
       closeDiv.innerText = "X";
       closeDiv.id = 'closeAddTaskWindow';
+      bottomRight.appendChild(closeDiv);
       bottom.classList.add('hideDesc');
 
       closeDiv.addEventListener('click', () => {
-        console.log("clicked on the close div");
-        // closeDiv.parentElement.parentElement.remove();
         bottom.classList.add('hideDesc');
 
 
       })
 
-      bottomRight.appendChild(closeDiv);
 
-      // bottom.innerText = jsonObject.title;
+      // bottomLeft.innerText = jsonObject.description;
 
 
       //prioDiv
@@ -138,13 +141,11 @@ export default class todoItem {
           console.log("setting checked to true in the object for itemid " + this.getItemNumber())
           this.setChecked(true);
           jsonObject.checked = true;
-          console.log(jsonObject.checked);
 
         } else {
           console.log("setting it to false");
           this.setChecked(false);
           jsonObject.checked = false;
-          console.log(jsonObject.checked);
         }
         localStorage.setItem(this.getItemNumber(), JSON.stringify(new todoItem(jsonObject.itemNumber, jsonObject.title, jsonObject.description, jsonObject.dueDate,jsonObject.priority,jsonObject.attachedNotes, jsonObject.checked,jsonObject.page)));
       });
@@ -163,7 +164,6 @@ export default class todoItem {
       detailsDiv.innerText = 'DETAILS';
 
       detailsDiv.addEventListener('click', () => {
-        console.log("clicked on a details div");
         bottom.classList.remove('hideDesc');
       })
 
@@ -202,18 +202,163 @@ export default class todoItem {
 
 
       let editBoxBottom = document.createElement('div');
+      editBoxBottom.id = 'addTaskContent';
 
       editBox.appendChild(editBoxTop);
       editBox.appendChild(editBoxBottom);
 
+
+      // Copied form start
+
+ // form
+
+ const formWrapper = document.createElement('form');
+
+ formWrapper.id = 'formID';
+
+ const priorityDropdown = document.createElement('select');
+ priorityDropdown.id = 'priority'; 
+
+ const option1 = document.createElement('option');
+ option1.textContent = 'Low'
+ option1.value = 'low';
+ const option2 = document.createElement('option');
+ option2.textContent = 'Medium';
+ option2.value = 'medium';
+ const option3 = document.createElement('option');
+ option3.textContent = 'High';
+ option3.value = 'high';
+
+//  jsonObject.itemNumber, jsonObject.title, jsonObject.description, jsonObject.dueDate,jsonObject.priority,jsonObject.attachedNotes, jsonObject.page);
+ 
+     // Create an input element for Task Name
+     let TN = document.createElement("input");
+     TN.id = 'TN';
+     TN.setAttribute("type", "text");
+     TN.setAttribute("value", jsonObject.title);
+     TN.setAttribute("name", "TaskName");
+     TN.setAttribute("placeholder", "Task Name");
+     TN.setAttribute("maxlength", "15");
+  
+      // Create an input element for date of completion
+      let DOC = document.createElement("input");
+      DOC.id = 'DOC';
+      DOC.setAttribute("type", "date");
+      DOC.setAttribute('value', jsonObject.dueDate);
+      DOC.setAttribute("name", "doc");
+      DOC.setAttribute("placeholder", "DOC");
+  
+      // Create an input element for details
+      let details = document.createElement("input");
+      details.id = 'details';
+      details.setAttribute("type", "text");
+      details.setAttribute("value", jsonObject.description)
+      details.setAttribute("name", "details");
+      details.setAttribute("placeholder", "Details");
+
+      
+
+
+      let br = document.createElement("br"); 
+
+      // create a submit button
+      let s = document.createElement("input");
+      s.id = 's';
+              // SUBMIT HERE IS WHAT CAUSES THE PAGE RELOAD, CAN DEAL WITH THAT LATE
+      s.setAttribute("type", "button");
+      s.setAttribute("value", "Submit");
+
+
+      s.addEventListener('click', () => {
+        if (boxesFilled(TN, DOC, details)) {
+          div.remove();
+          editBox.remove();
+
+          localStorage.setItem(this.getItemNumber(), JSON.stringify(new todoItem(this.itemNumber, TN.value, details.value, DOC.value, priorityDropdown.value, "", false, this.page )));
+          closeDiv.click()
+          let jsonObject = JSON.parse(localStorage.getItem(this.itemNumber));
+          console.log(jsonObject);
+          let nextEntry = new todoItem(jsonObject.itemNumber, jsonObject.title, jsonObject.description, jsonObject.dueDate,jsonObject.priority,jsonObject.attachedNotes, jsonObject.page);
+          contentDiv.appendChild(nextEntry.returnDiv(contentDiv));
+      } else {
+          alert("please fill all boxes before submitting");
+      }
+
+function boxesFilled(titleName, details) {
+if (titleName.value.length == 0 || details.value.length == 0) {
+  return false;
+}
+return true;
+} 
+      })
+
+
+
+
+
+          
+      
+      
+      // Append the full name input to the form
+      formWrapper.appendChild(TN); 
+      
+      // Inserting a line break
+      formWrapper.appendChild(br.cloneNode()); 
+      // Inserting a line break
+      formWrapper.appendChild(br.cloneNode()); 
+
+      // Append the details to the formWrapper
+      formWrapper.appendChild(details); 
+      formWrapper.appendChild(br.cloneNode());
+
+      // Inserting a line break
+      formWrapper.appendChild(br.cloneNode()); 
+
+      const dateExplainer = document.createElement('div');
+      dateExplainer.classList.add('whitetext');
+      dateExplainer.textContent = 'Choose the date of completion:'
+
+      formWrapper.appendChild(dateExplainer);
+      
+      // Append the DOB to the formWrapper
+      formWrapper.appendChild(DOC); 
+      formWrapper.appendChild(br.cloneNode()); 
+       
+      
+      
+
+
+      priorityDropdown.appendChild(option1);
+      priorityDropdown.appendChild(option2);
+      priorityDropdown.appendChild(option3);
+
+      formWrapper.appendChild(priorityDropdown);
+
+      // Append the submit button to the formWrapper
+      formWrapper.appendChild(s); 
+      
+
+
+
+  
+  editBoxBottom.appendChild(formWrapper);
+
+  // editDiv.appendChild(divTitle);
+  // editDiv.appendChild(divContent)
+
+      // Copied form finished
+
       //-------------------------------------
 
       editSVG.addEventListener('click', () => {
-        console.log("clicked on edit div, appending editBox to " + div.parentElement.parentElement.parentElement.innerText);
         div.parentElement.parentElement.parentElement.parentElement.appendChild(editBox);
         
         
       })
+
+      editBoxClose.addEventListener('click', function() {
+        editBox.remove();
+    })
 
       //deleteDiv
       const deleteDiv = document.createElement('div');
@@ -224,7 +369,6 @@ export default class todoItem {
       deleteSVG.classList.add('svgToDo');
       deleteSVG.classList.add('deleteSVG');
 
-      console.log(this.getItemNumber())
 
 
       // deleteSVG.addEventListener('click', function() {
@@ -237,6 +381,8 @@ export default class todoItem {
         div.remove();
       });
       //appends
+
+  
 
       left.appendChild(priorityDiv);
       left.appendChild(checkedDiv);

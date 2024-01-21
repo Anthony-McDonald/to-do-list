@@ -1,5 +1,5 @@
 make indvidual project pages work as well as the ability to add new ones
 
-Grey out projects on click like elsewhere
+Grey out projects on click, like elsewhere
 
 make an edit window that pops up on edit button press, can just be a copy of the current divs except with prefilled templates perhaps

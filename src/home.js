@@ -23,24 +23,22 @@ export default function homeMain() {
 
     // constructor for todoitem:(itemNumber, title, description, dueDate, priority, attachedNotes, checked, page) 
 
-    // const exampleToDo = new todoItem(1,'brush teeth', 'with toothpaste', '15/06/2024', 'medium', "",false, "home");
+    const exampleToDo = new todoItem(1,'brush teeth', 'with toothpaste', '15/06/2024', 'medium', "",false, "home");
     addNewToDo.addEventListener('click', function() {
         homeMain.appendChild(showTaskForm(contentDiv, "home"));
         
         
     });
 
-    // contentDiv.appendChild(exampleToDo.returnDiv());
+    contentDiv.appendChild(exampleToDo.returnDiv());
     // contentDiv.appendChild(exampleToDo2.returnDiv());
     let idsInStorage = localStorage.getItem("tItemID");
     for (let i = -1; i < parseInt(idsInStorage); i++) {
-        console.log("entry")
         
         let jsonObject = JSON.parse(localStorage.getItem(i + 1))
         if (jsonObject != null && jsonObject.page == "home") {
-            console.log(jsonObject);
             let nextEntry = new todoItem(jsonObject.itemNumber, jsonObject.title, jsonObject.description, jsonObject.dueDate,jsonObject.priority,jsonObject.attachedNotes,jsonObject.checked, jsonObject.page);
-            contentDiv.appendChild(nextEntry.returnDiv());
+            contentDiv.appendChild(nextEntry.returnDiv(contentDiv));
         }
 
     };

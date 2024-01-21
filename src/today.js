@@ -33,13 +33,13 @@ export default function todayMain() {
     // contentDiv.appendChild(exampleToDo2.returnDiv());
     let idsInStorage = localStorage.getItem("tItemID");
     for (let i = -1; i < parseInt(idsInStorage); i++) {
-        console.log("entry")
+
         
         let jsonObject = JSON.parse(localStorage.getItem(i + 1))
         if (jsonObject != null && jsonObject.page == "today") {
-            console.log(jsonObject);
+
             let nextEntry = new todoItem(jsonObject.itemNumber, jsonObject.title, jsonObject.description, jsonObject.dueDate,jsonObject.priority,jsonObject.attachedNotes,jsonObject.checked, jsonObject.page);
-            contentDiv.appendChild(nextEntry.returnDiv());
+            contentDiv.appendChild(nextEntry.returnDiv(contentDiv));
         }
 
     };

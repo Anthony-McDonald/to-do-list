@@ -85,22 +85,18 @@ export default function showTaskForm(contentDiv, page) {
 
                 // localStorage.setItem("itemID", localStorage.getItem("itemID") + "testing");
                 if (localStorage.getItem("tItemID") == null) {
-                    console.log("no item with ID itemID, creating");
                     localStorage.setItem("tItemID", "0" );
                 } else {
-                    console.log("item present, incrementing");
                     localStorage.setItem("tItemID", parseInt(localStorage.getItem("tItemID")) + 1);
                     // localStorage.removeItem("tItemID");
 
                 }
                 let lastEntry = localStorage.getItem("tItemID");
-                console.log("page is equal to " + page);
                 localStorage.setItem(localStorage.getItem("tItemID"), JSON.stringify(new todoItem(localStorage.getItem("tItemID"), TN.value, details.value, DOC.value, priorityDropdown.value, "", false, page )));
                 closeAddTask.click()
                 let jsonObject = JSON.parse(localStorage.getItem(lastEntry))
-                console.log(jsonObject);
                 let nextEntry = new todoItem(jsonObject.itemNumber, jsonObject.title, jsonObject.description, jsonObject.dueDate,jsonObject.priority,jsonObject.attachedNotes, jsonObject.page);
-                contentDiv.appendChild(nextEntry.returnDiv());
+                contentDiv.appendChild(nextEntry.returnDiv(contentDiv));
 
                 
 

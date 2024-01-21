@@ -1,7 +1,6 @@
 import noteItem from "./noteItem";
 
 export default function showNoteForm(contentDiv, page) {
-    console.log('task form being shown');
 
     const divToShow = document.createElement('div');
     divToShow.id = 'addTaskForm';
@@ -63,23 +62,18 @@ export default function showNoteForm(contentDiv, page) {
 
                 // localStorage.setItem("itemID", localStorage.getItem("itemID") + "testing");
                 if (localStorage.getItem("tItemID") == null) {
-                    console.log("no item with ID itemID, creating");
                     localStorage.setItem("tItemID", "0" );
                 } else {
-                    console.log("item present, incrementing");
                     localStorage.setItem("tItemID", parseInt(localStorage.getItem("tItemID")) + 1);
                     // localStorage.removeItem("tItemID");
 
                 }
                 let lastEntry = localStorage.getItem("tItemID");
-                console.log("page is equal to " + page);
                 localStorage.setItem(localStorage.getItem("tItemID"), JSON.stringify(new noteItem(localStorage.getItem("tItemID"), TN.value, details.value)));
                 closeAddNote.click()
                 let jsonObject = JSON.parse(localStorage.getItem(lastEntry))
-                console.log(jsonObject);
                 let nextEntry = new noteItem(jsonObject.itemNumber, jsonObject.title, jsonObject.description);
-                console.log(nextEntry);
-                contentDiv.appendChild(nextEntry.returnDiv());
+                contentDiv.appendChild(nextEntry.returnDiv(contentDiv));
 
                 
 

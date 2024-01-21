@@ -355,10 +355,8 @@ import noteMain from './note.js';
   switch(toSwitchTo) {
       case 'home':
          document.querySelector('.mainholder').appendChild(homeMain());
-          console.log('home');
           break;
       case 'today':
-        console.log('today')
         document.querySelector('.mainholder').appendChild(todayMain());
           break;
       case "week":
@@ -366,7 +364,6 @@ import noteMain from './note.js';
           break;
       case "note":
           document.querySelector('.mainholder').appendChild(noteMain());
-          console.log('test');
           break;
   }
 

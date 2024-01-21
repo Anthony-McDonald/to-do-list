@@ -33,7 +33,7 @@ export default class noteItem {
       this.itemNumber = itemNumber;
     }
 
-    returnDiv() {
+    returnDiv(contentDiv) {
       const div = document.createElement('div');
 
       div.id = 'noteItem';

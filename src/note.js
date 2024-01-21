@@ -42,13 +42,12 @@ export default function noteMain() {
     
     let idsInStorage = localStorage.getItem("tItemID");
     for (let i = -1; i < parseInt(idsInStorage); i++) {
-        console.log("entry")
-        
+
         let jsonObject = JSON.parse(localStorage.getItem(i + 1))
         if (jsonObject != null && jsonObject.page == null) {
-            console.log(jsonObject);
+
             let nextEntry = new noteItem(jsonObject.itemNumber, jsonObject.title, jsonObject.description);
-            contentDiv.appendChild(nextEntry.returnDiv());
+            contentDiv.appendChild(nextEntry.returnDiv(contentDiv));
         }
 
     };

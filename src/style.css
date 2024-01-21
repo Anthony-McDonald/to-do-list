@@ -273,10 +273,13 @@ font-family: 'Oswald';
     margin-right: 0.8rem;
     text-align: start;
     padding-left: 1rem;
-    justify-content: start;
-    align-items: center;
+    justify-content: space-between;
     display: flex;
 
+}
+
+#desc {
+    padding-left: 1rem;
 }
 
 #descriptionTitle {
@@ -284,13 +287,17 @@ font-family: 'Oswald';
     font-weight:bolder;
     font-size: 0.9rem;
     margin-right: 1rem;
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
+    
 }
 
 #descriptionContent {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
-    width: 100%;
+    width: 50%;
 }
 
 #todoFormat {
@@ -330,8 +337,10 @@ font-family: 'Oswald';
     height: 100%;
 }
 #priorityDiv {
-height: 85%;
-width: 0.4rem;
+height: 3.2rem;
+width: 0.5rem;
+border-radius: 0.3rem 0 0 0.3rem;
+
 }
 
 .priorityHigh {
@@ -382,13 +391,16 @@ user-select: none;
 }
 
 .editBox {
-    height: 10rem;
-    width: 20rem;
+    height: 15rem;
+    width: 18rem;
     background-color: green;
     position: absolute;
-    left: 40%;
-    top: 30%;
+    left: 48%;
+    top: 36%;
     border-radius: 0.3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
 }
 
 #editBoxTop {
@@ -405,9 +417,15 @@ user-select: none;
 
 }
 
-#editBoxClose {
-
+#editBoxBottom {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    padding: 1rem;
+    padding-left: 0;
 }
+
+
 
 #deleteDiv {
 -webkit-user-select: none;
@@ -442,6 +460,15 @@ user-select: none;
 }
 
 /* add task form */
+
+
+#formID {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-content: space-between;
+}
+
 
 #addTaskForm {
     height: 15rem;
