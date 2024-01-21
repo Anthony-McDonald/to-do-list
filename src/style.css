@@ -10,7 +10,10 @@
 /* Medium devices such as tablets (768px and up) */
 @media only screen and (min-width: 48em) {
 
-    
+    .notemain {
+        grid-auto-columns: repeat(auto-fill, 100%);
+        overflow: scroll;
+    }
     .hide {
         position: absolute !important;
         top: -9999px !important;
@@ -60,6 +63,12 @@
 }
 .hide {
 
+}
+
+.hideDesc {
+    position: absolute !important;
+    top: -9999px !important;
+    left: -9999px !important;
 }
 
 
@@ -121,10 +130,10 @@ font-family: 'Oswald';
 }
 
 .mainholder {
-    background-color: 065a60;
+    background-color: #065a60;
     flex-grow: 1;
     display: flex;
-    justify-content: center;
+    justify-content: right;
     align-items: center;
     flex-direction: row;
     position: relative;
@@ -164,8 +173,9 @@ font-family: 'Oswald';
 
 .sidebar1 {
     display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
     flex-shrink: 0;
     align-items: start;
     background-color: gray;
@@ -178,6 +188,15 @@ font-family: 'Oswald';
     padding-bottom: 0.1rem;
     font-size: 1rem;
 }
+
+#projId {
+    flex-direction: column;
+}
+
+
+.clickedOn {
+    background-image: linear-gradient(rgb(0 0 0/40%) 0 0) !important;
+  }
 
 .sideOverwrite {
     flex-direction: row;
@@ -223,9 +242,15 @@ font-family: 'Oswald';
 
 /* todoitem ids  */
 
+#todoFormat {
+    display: flex;
+    height: auto;
+}
+
 #topFormat  {
     background-color: lightcyan;
-    height: 2rem;
+    height: auto;
+    padding: 0;
     width: 100%;
     border-radius: 0.3rem;
     margin-bottom: 0.3rem;
@@ -235,6 +260,7 @@ font-family: 'Oswald';
     justify-content: space-between;
     flex-shrink: 0.5;
     font-size: 3vw;
+    flex-wrap: wrap;
     font-size: clamp(0.8rem, 2.5vw, 1rem);
 }
 
@@ -354,6 +380,15 @@ user-select: none;
 user-select: none;
 }
 
+.editBox {
+    height: 10rem;
+    width: 20rem;
+    background-color: red;
+    position: absolute;
+    left: 40%;
+    top: 30%;
+}
+
 #deleteDiv {
 -webkit-user-select: none;
 user-select: none;
@@ -439,6 +474,7 @@ user-select: none;
     color: white;
     border-radius: 0.1rem;
     user-select: none;
+    -webkit-user-select: none;
 }
 
 #detailsPopup {
@@ -461,6 +497,8 @@ user-select: none;
     display: flex;
     flex-direction: column;
     position: relative;
+    justify-self: center;
+    left: 0.5rem;
 }
 
 .notemain {

@@ -103,12 +103,12 @@ export default class todoItem {
       let closeDiv = document.createElement('div');
       closeDiv.innerText = "X";
       closeDiv.id = 'closeAddTaskWindow';
-      bottom.classList.add('hide');
+      bottom.classList.add('hideDesc');
 
       closeDiv.addEventListener('click', () => {
         console.log("clicked on the close div");
         // closeDiv.parentElement.parentElement.remove();
-        bottom.classList.add('hide');
+        bottom.classList.add('hideDesc');
 
 
       })
@@ -164,9 +164,7 @@ export default class todoItem {
 
       detailsDiv.addEventListener('click', () => {
         console.log("clicked on a details div");
-        bottom.classList.remove('hide');
-
-
+        bottom.classList.remove('hideDesc');
       })
 
 
@@ -179,10 +177,26 @@ export default class todoItem {
       const editDiv = document.createElement('div');
       editDiv.id = 'editDiv';
 
+
       const editSVG = new Image();
       editSVG.src = editIcon;
       editSVG.classList.add('svgToDo');
       editSVG.classList.add('editSVG');
+
+      //EDIT BOX DECLARATION
+      // ------------------------------------
+      let editBox = document.createElement('div');
+      editBox.classList.add('editBox');
+      editBox.innerText = "test";
+
+      //-------------------------------------
+
+      editSVG.addEventListener('click', () => {
+        console.log("clicked on edit div, appending editBox to " + div.parentElement.parentElement.parentElement.innerText);
+        div.parentElement.parentElement.parentElement.parentElement.appendChild(editBox);
+        
+        
+      })
 
       //deleteDiv
       const deleteDiv = document.createElement('div');

@@ -98,13 +98,15 @@ import noteMain from './note.js';
     const homeBox = document.createElement('div');
     homeBox.classList.add('sidebar1');
     homeBox.classList.add('sideoverwrite');
+    homeBox.classList.add('clickedOn');
+
     const homeSVG = new Image();
     homeSVG.src = homeIcon;
     homeSVG.id = 'homeSVG';
     homeSVG.classList.add('svg');
     const homeText = document.createElement('h5');
-    homeText.classList.add("sidetext");
-    homeText.innerHTML = 'homebox'
+    homeText.classList.add("sideText");
+    homeText.innerHTML = 'Home'
 
 
     homeBox.appendChild(homeSVG);
@@ -122,8 +124,8 @@ import noteMain from './note.js';
     todaySVG.classList.add('svg');
 
     const todayText = document.createElement('h5');
-    todayText.classList.add("sidetext");
-    todayText.innerHTML = 'todaybox'
+    todayText.classList.add("sideText");
+    todayText.innerHTML = 'Today'
 
     todayBox.appendChild(todaySVG);
     todayBox.appendChild(todayText);
@@ -139,8 +141,9 @@ import noteMain from './note.js';
     weekSVG.classList.add('svg');
 
     const weekText = document.createElement('h5');
-    weekText.classList.add("sidetext");
-    weekText.innerHTML = 'weekbox'
+    weekText.classList.add("sideText");
+    
+    weekText.innerHTML = 'Week'
 
     weekBox.appendChild(weekSVG);
     weekBox.appendChild(weekText);
@@ -148,12 +151,13 @@ import noteMain from './note.js';
     //projectbox
     const projectBox = document.createElement('div');
     projectBox.classList.add('sidebar1');
+    projectBox.id = "projId";
 
     const projTitle = document.createElement('div');
     projTitle.classList.add('projTitle');
 
     const projTitleText = document.createElement('h5');
-    projTitleText.innerText = 'projectbox';
+    projTitleText.innerText = 'Project';
     projTitleText.classList.add('sideText')
 
     const projContent = document.createElement('div');
@@ -206,8 +210,8 @@ import noteMain from './note.js';
     noteBSVG.classList.add('svg');
 
     const noteText = document.createElement('h5');
-    noteText.classList.add("sidetext");
-    noteText.innerHTML = 'notebox'
+    noteText.classList.add("sideText");
+    noteText.innerHTML = 'Notes'
 
     noteBox.appendChild(noteBSVG);
     noteBox.appendChild(noteText);
@@ -227,21 +231,33 @@ import noteMain from './note.js';
     sidebar.classList.add('homesidebar');
     sidebar.classList.add('hide2');
 
+// This is for the elements that show on narrow screen, phone etc.
     homeBox.addEventListener("click", function(event) {
       buttonHandler('home');
     }) ;
     todayBox.addEventListener("click", function(event) {
+      sideColourChanger(homeBox, todayBox);
+      sideColourChanger(weekBox, todayBox);
+      sideColourChanger(noteBox, todayBox);
       buttonHandler('today');
     }) ;
     weekBox.addEventListener("click", function(event) {
+      sideColourChanger(todayBox, weekBox);
+      sideColourChanger(homeBox, weekBox);
+      sideColourChanger(noteBox, weekBox);
       buttonHandler('week');
     }) ;
     noteBox.addEventListener("click", function(event) {
+      sideColourChanger(todayBox, noteBox);
+      sideColourChanger(weekBox, noteBox);
+      sideColourChanger(homeBox, noteBox);
       buttonHandler('note');
     }) ;
 
 
 
+// The buttons on the page are only working through the clones
+// Add any handler code here;
     const clnHomeBox = homeBox.cloneNode(true);
     const clnTodayBox = todayBox.cloneNode(true);
     const clnWeekBox = weekBox.cloneNode(true);
@@ -249,17 +265,35 @@ import noteMain from './note.js';
     const clnNoteBox = noteBox.cloneNode(true);
 
     clnHomeBox.addEventListener("click", function(event) {
+      sideColourChanger(clnTodayBox, clnHomeBox);
+      sideColourChanger(clnWeekBox, clnHomeBox);
+      sideColourChanger(clnNoteBox, clnHomeBox);
       buttonHandler('home');
     }) ;
     clnTodayBox.addEventListener("click", function(event) {
+      sideColourChanger(clnHomeBox, clnTodayBox);
+      sideColourChanger(clnWeekBox, clnTodayBox);
+      sideColourChanger(clnNoteBox, clnTodayBox);
       buttonHandler('today');
     }) ;
     clnWeekBox.addEventListener("click", function(event) {
+      sideColourChanger(clnTodayBox, clnWeekBox);
+      sideColourChanger(clnHomeBox, clnWeekBox);
+      sideColourChanger(clnNoteBox, clnWeekBox);
       buttonHandler('week');
     }) ;
     clnNoteBox.addEventListener("click", function(event) {
+      sideColourChanger(clnTodayBox, clnNoteBox);
+      sideColourChanger(clnWeekBox, clnNoteBox);
+      sideColourChanger(clnHomeBox, clnNoteBox);
       buttonHandler('note');
     }) ;
+
+
+    function sideColourChanger(boxToRemove, boxToAdd) {
+      boxToRemove.classList.remove("clickedOn");
+      boxToAdd.classList.add("clickedOn");
+    }
     
     sidebar.appendChild(clnHomeBox);
     sidebar.appendChild(clnTodayBox);
@@ -293,8 +327,12 @@ import noteMain from './note.js';
  }
 
  function buttonHandler(toSwitchTo) {
-  console.log("called");
   clearMain();
+  // let boxes = document.querySelectorAll("#homeSVG");
+  // boxes.forEach((box) => {
+  //   box.classList.remove("clickedOn");
+  //   console.log("removing clickedOn from " + box.innerHTML);
+  // })
   switch(toSwitchTo) {
       case 'home':
          document.querySelector('.mainholder').appendChild(homeMain());

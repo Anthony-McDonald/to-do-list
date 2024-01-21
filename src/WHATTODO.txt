@@ -1,11 +1,5 @@
-create the back end in general, should be individual to every page,
-different back end should be generated for every project as well on the side
-should one be added.
-
 make indvidual project pages work as well as the ability to add new ones
-
-make a details box that pops up on details button press
 
 make an edit window that pops up on edit button press, can just be a copy of the current divs except with prefilled templates perhaps
 
-Make sidebar icons show some sort of obivousness that theyve been clicked, could be colour based
+Make sidebar icons show some sort of obivousness that theyve been clicked, could be colour based - Just have to do it to projectbox now when out
