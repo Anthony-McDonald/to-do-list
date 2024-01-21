@@ -239,18 +239,27 @@ import noteMain from './note.js';
       sideColourChanger(homeBox, todayBox);
       sideColourChanger(weekBox, todayBox);
       sideColourChanger(noteBox, todayBox);
+      sideColourChanger(clnHomeBox, clnTodayBox);
+      sideColourChanger(clnWeekBox, clnTodayBox);
+      sideColourChanger(clnNoteBox, clnTodayBox);
       buttonHandler('today');
     }) ;
     weekBox.addEventListener("click", function(event) {
       sideColourChanger(todayBox, weekBox);
       sideColourChanger(homeBox, weekBox);
       sideColourChanger(noteBox, weekBox);
+      sideColourChanger(clnTodayBox, clnWeekBox);
+      sideColourChanger(clnHomeBox, clnWeekBox);
+      sideColourChanger(clnNoteBox, clnWeekBox);
       buttonHandler('week');
     }) ;
     noteBox.addEventListener("click", function(event) {
       sideColourChanger(todayBox, noteBox);
       sideColourChanger(weekBox, noteBox);
       sideColourChanger(homeBox, noteBox);
+      sideColourChanger(clnTodayBox, clnNoteBox);
+      sideColourChanger(clnWeekBox, clnNoteBox);
+      sideColourChanger(clnHomeBox, clnNoteBox);
       buttonHandler('note');
     }) ;
 
@@ -274,18 +283,28 @@ import noteMain from './note.js';
       sideColourChanger(clnHomeBox, clnTodayBox);
       sideColourChanger(clnWeekBox, clnTodayBox);
       sideColourChanger(clnNoteBox, clnTodayBox);
+      sideColourChanger(homeBox, todayBox);
+      sideColourChanger(weekBox, todayBox);
+      sideColourChanger(noteBox, todayBox);
+      
       buttonHandler('today');
     }) ;
     clnWeekBox.addEventListener("click", function(event) {
       sideColourChanger(clnTodayBox, clnWeekBox);
       sideColourChanger(clnHomeBox, clnWeekBox);
       sideColourChanger(clnNoteBox, clnWeekBox);
+      sideColourChanger(todayBox, weekBox);
+      sideColourChanger(homeBox, weekBox);
+      sideColourChanger(noteBox, weekBox);
       buttonHandler('week');
     }) ;
     clnNoteBox.addEventListener("click", function(event) {
       sideColourChanger(clnTodayBox, clnNoteBox);
       sideColourChanger(clnWeekBox, clnNoteBox);
       sideColourChanger(clnHomeBox, clnNoteBox);
+      sideColourChanger(todayBox, noteBox);
+      sideColourChanger(weekBox, noteBox);
+      sideColourChanger(homeBox, noteBox);
       buttonHandler('note');
     }) ;
 
