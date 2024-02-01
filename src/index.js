@@ -150,52 +150,52 @@ import noteMain from './note.js';
 
     //projectbox
     const projectBox = document.createElement('div');
-    projectBox.classList.add('sidebar1');
-    projectBox.id = "projId";
+    // projectBox.classList.add('sidebar1');
+    // projectBox.id = "projId";
 
-    const projTitle = document.createElement('div');
-    projTitle.classList.add('projTitle');
+    // const projTitle = document.createElement('div');
+    // projTitle.classList.add('projTitle');
 
-    const projTitleText = document.createElement('h5');
-    projTitleText.innerText = 'Project';
-    projTitleText.classList.add('sideText')
+    // const projTitleText = document.createElement('h5');
+    // projTitleText.innerText = 'Project';
+    // projTitleText.classList.add('sideText')
 
-    const projContent = document.createElement('div');
-    projContent.classList.add('projContent');
-
-
-    projectBox.appendChild(projTitle);
-    projectBox.appendChild(projContent);
+    // const projContent = document.createElement('div');
+    // projContent.classList.add('projContent');
 
 
-    const proj1 = document.createElement('div');
-    proj1.classList.add('proj');
-    proj1.innerText = 'proj1';
+    // projectBox.appendChild(projTitle);
+    // projectBox.appendChild(projContent);
 
-    const proj2 = document.createElement('div');
-    proj2.classList.add('proj');
-    proj2.innerText = 'proj2';
 
-    const proj3 = document.createElement('div');
-    proj3.classList.add('proj');
-    proj3.innerText = 'proj3';
+    // const proj1 = document.createElement('div');
+    // proj1.classList.add('proj');
+    // proj1.innerText = 'proj1';
 
-    const addProj = document.createElement('div');
-    addProj.classList.add('proj');
-    addProj.innerText = '+ PROJECT';
+    // const proj2 = document.createElement('div');
+    // proj2.classList.add('proj');
+    // proj2.innerText = 'proj2';
 
-    const projSVG = new Image();
-    projSVG.src = projIcon;
-    projSVG.id = 'homeSVG';
-    projSVG.classList.add('svg');
+    // const proj3 = document.createElement('div');
+    // proj3.classList.add('proj');
+    // proj3.innerText = 'proj3';
 
-    projTitle.appendChild(projSVG);
-    projTitle.appendChild(projTitleText);
+    // const addProj = document.createElement('div');
+    // addProj.classList.add('proj');
+    // addProj.innerText = '+ PROJECT';
 
-    projContent.appendChild(proj1);
-    projContent.appendChild(proj2);
-    projContent.appendChild(proj3);
-    projContent.appendChild(addProj);
+    // const projSVG = new Image();
+    // projSVG.src = projIcon;
+    // projSVG.id = 'homeSVG';
+    // projSVG.classList.add('svg');
+
+    // projTitle.appendChild(projSVG);
+    // projTitle.appendChild(projTitleText);
+
+    // projContent.appendChild(proj1);
+    // projContent.appendChild(proj2);
+    // projContent.appendChild(proj3);
+    // projContent.appendChild(addProj);
 
 
     //notebox
