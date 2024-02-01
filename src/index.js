@@ -242,6 +242,12 @@ import noteMain from './note.js';
 // This is for the elements that show on narrow screen, phone etc.
     homeBox.addEventListener("click", function(event) {
       buttonHandler('home');
+      sideColourChanger(todayBox, homeBox);
+      sideColourChanger(weekBox, homeBox);
+      sideColourChanger(noteBox, homeBox);
+      sideColourChanger(clnTodayBox, clnHomeBox);
+      sideColourChanger(clnWeekBox, clnHomeBox);
+      sideColourChanger(clnNoteBox, clnHomeBox);
     }) ;
     todayBox.addEventListener("click", function(event) {
       sideColourChanger(homeBox, todayBox);
