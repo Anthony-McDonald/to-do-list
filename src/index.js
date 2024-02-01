@@ -22,6 +22,14 @@ import noteMain from './note.js';
 
 
  function component() {
+
+  window.onload = function () {
+    if (! localStorage.justOnce) {
+        localStorage.setItem("justOnce", "true");
+        window.location.reload();
+    }
+}
+
   // Define wrapper div
    const element = document.createElement('div');
    element.classList.add("wrapper");
