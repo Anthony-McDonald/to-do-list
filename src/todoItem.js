@@ -80,6 +80,7 @@ export default class todoItem {
       const exampleToDo1 = new todoItem(2,'brush teeth', 'with toothpaste', '15/06/2024', 'medium', "",false, "today");
       const exampleToDo2 = new todoItem(3,'brush teeth', 'with toothpaste', '15/06/2024', 'medium', "",false, "week");
   
+
       if (jsonObject == null) {
         console.log('code runs');
         localStorage.setItem('0', JSON.stringify(exampleToDo));
@@ -182,7 +183,7 @@ export default class todoItem {
       //dateDiv
       const dateDiv = document.createElement('div');
       dateDiv.id = 'dateDiv';
-      dateDiv.innerText = this.getDueDate();
+      dateDiv.innerHTML = this.getDueDate();
 
       //editDiv
       const editDiv = document.createElement('div');
@@ -285,7 +286,7 @@ export default class todoItem {
           div.remove();
           editBox.remove();
 
-          localStorage.setItem(this.getItemNumber(), JSON.stringify(new todoItem(this.itemNumber, TN.value, details.value, DOC.value, priorityDropdown.value, "", false, this.page )));
+          localStorage.setItem(this.getItemNumber(), JSON.stringify(new todoItem(this.itemNumber, TN.value, details.value, DOC.value, priorityDropdown.value, "", false, this.getPage() )));
           closeDiv.click()
           let jsonObject = JSON.parse(localStorage.getItem(this.itemNumber));
           console.log(jsonObject);
