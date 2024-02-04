@@ -8,6 +8,7 @@ import weekIcon from './assets/calendar-range.svg';
 import projIcon from './assets/proj.svg';
 import notesIcon from './assets/notes.svg';
 import homeMain from './home.js';
+import addProjFunction from './addProj.js'
 import todayMain from './today.js';
 import weekMain from './week.js';
 import projectMain from './proj_template.js';
@@ -158,52 +159,69 @@ import noteMain from './note.js';
 
     //projectbox
     const projectBox = document.createElement('div');
-    // projectBox.classList.add('sidebar1');
-    // projectBox.id = "projId";
+    projectBox.classList.add('sidebar1');
+    projectBox.id = "projId";
 
-    // const projTitle = document.createElement('div');
-    // projTitle.classList.add('projTitle');
+    const projTitle = document.createElement('div');
+    projTitle.classList.add('projTitle');
 
-    // const projTitleText = document.createElement('h5');
-    // projTitleText.innerText = 'Project';
-    // projTitleText.classList.add('sideText')
+    const projTitleText = document.createElement('h5');
+    projTitleText.innerText = 'Project';
+    projTitleText.classList.add('sideText')
 
-    // const projContent = document.createElement('div');
-    // projContent.classList.add('projContent');
-
-
-    // projectBox.appendChild(projTitle);
-    // projectBox.appendChild(projContent);
+    const projContent = document.createElement('div');
+    projContent.classList.add('projContent');
 
 
-    // const proj1 = document.createElement('div');
-    // proj1.classList.add('proj');
-    // proj1.innerText = 'proj1';
+    projectBox.appendChild(projTitle);
+    projectBox.appendChild(projContent);
 
-    // const proj2 = document.createElement('div');
-    // proj2.classList.add('proj');
-    // proj2.innerText = 'proj2';
 
-    // const proj3 = document.createElement('div');
-    // proj3.classList.add('proj');
-    // proj3.innerText = 'proj3';
 
-    // const addProj = document.createElement('div');
-    // addProj.classList.add('proj');
-    // addProj.innerText = '+ PROJECT';
 
-    // const projSVG = new Image();
-    // projSVG.src = projIcon;
-    // projSVG.id = 'homeSVG';
-    // projSVG.classList.add('svg');
+    const proj1 = document.createElement('div');
+    proj1.classList.add('proj');
+    proj1.innerText = 'proj1';
+    proj1.id = 'proj1'
 
-    // projTitle.appendChild(projSVG);
-    // projTitle.appendChild(projTitleText);
 
-    // projContent.appendChild(proj1);
-    // projContent.appendChild(proj2);
-    // projContent.appendChild(proj3);
-    // projContent.appendChild(addProj);
+
+
+
+    const addProj = document.createElement('div');
+    addProj.classList.add('proj');
+    addProj.innerText = '+ PROJECT';
+    addProj.id = 'addProj';
+  
+
+
+
+    const projSVG = new Image();
+    projSVG.src = projIcon;
+    projSVG.id = 'homeSVG';
+    projSVG.classList.add('svg');
+
+    projTitle.appendChild(projSVG);
+    projTitle.appendChild(projTitleText);
+
+    
+    projContent.appendChild(proj1);
+    projContent.appendChild(addProj);
+
+
+    const testElement = document.createElement('div');
+    testElement.textContent = 'test'
+    projContent.appendChild(testElement)
+
+    if (localStorage.getItem('projID') == null) {
+      localStorage.setItem('projID', 0);
+    } 
+
+    for (let i = 0; i < localStorage.getItem('projID'); i++) {
+      let element = document.createElement('div');
+      element.textContent = i;
+      projContent.appendChild(element);
+    }
 
 
     //notebox
@@ -245,35 +263,35 @@ import noteMain from './note.js';
       sideColourChanger(todayBox, homeBox);
       sideColourChanger(weekBox, homeBox);
       sideColourChanger(noteBox, homeBox);
-      sideColourChanger(clnTodayBox, clnHomeBox);
-      sideColourChanger(clnWeekBox, clnHomeBox);
-      sideColourChanger(clnNoteBox, clnHomeBox);
+      sideColourChanger(sidebarTodayBox, sidebarHomeBox);
+      sideColourChanger(sidebarWeekBox, sidebarHomeBox);
+      sideColourChanger(sidebarNoteBox, sidebarHomeBox);
     }) ;
     todayBox.addEventListener("click", function(event) {
       sideColourChanger(homeBox, todayBox);
       sideColourChanger(weekBox, todayBox);
       sideColourChanger(noteBox, todayBox);
-      sideColourChanger(clnHomeBox, clnTodayBox);
-      sideColourChanger(clnWeekBox, clnTodayBox);
-      sideColourChanger(clnNoteBox, clnTodayBox);
+      sideColourChanger(sidebarHomeBox, sidebarTodayBox);
+      sideColourChanger(sidebarWeekBox, sidebarTodayBox);
+      sideColourChanger(sidebarNoteBox, sidebarTodayBox);
       buttonHandler('today');
     }) ;
     weekBox.addEventListener("click", function(event) {
       sideColourChanger(todayBox, weekBox);
       sideColourChanger(homeBox, weekBox);
       sideColourChanger(noteBox, weekBox);
-      sideColourChanger(clnTodayBox, clnWeekBox);
-      sideColourChanger(clnHomeBox, clnWeekBox);
-      sideColourChanger(clnNoteBox, clnWeekBox);
+      sideColourChanger(sidebarTodayBox, sidebarWeekBox);
+      sideColourChanger(sidebarHomeBox, sidebarWeekBox);
+      sideColourChanger(sidebarNoteBox, sidebarWeekBox);
       buttonHandler('week');
     }) ;
     noteBox.addEventListener("click", function(event) {
       sideColourChanger(todayBox, noteBox);
       sideColourChanger(weekBox, noteBox);
       sideColourChanger(homeBox, noteBox);
-      sideColourChanger(clnTodayBox, clnNoteBox);
-      sideColourChanger(clnWeekBox, clnNoteBox);
-      sideColourChanger(clnHomeBox, clnNoteBox);
+      sideColourChanger(sidebarTodayBox, sidebarNoteBox);
+      sideColourChanger(sidebarWeekBox, sidebarNoteBox);
+      sideColourChanger(sidebarHomeBox, sidebarNoteBox);
       buttonHandler('note');
     }) ;
 
@@ -281,41 +299,41 @@ import noteMain from './note.js';
 
 // The buttons on the page are only working through the clones
 // Add any handler code here;
-    const clnHomeBox = homeBox.cloneNode(true);
-    const clnTodayBox = todayBox.cloneNode(true);
-    const clnWeekBox = weekBox.cloneNode(true);
-    const clnProjectBox = projectBox.cloneNode(true);
-    const clnNoteBox = noteBox.cloneNode(true);
+    const sidebarHomeBox = homeBox.cloneNode(true);
+    const sidebarTodayBox = todayBox.cloneNode(true);
+    const sidebarWeekBox = weekBox.cloneNode(true);
+    const sidebarProjectBox = projectBox.cloneNode(true);
+    const sidebarNoteBox = noteBox.cloneNode(true);
 
-    clnHomeBox.addEventListener("click", function(event) {
-      sideColourChanger(clnTodayBox, clnHomeBox);
-      sideColourChanger(clnWeekBox, clnHomeBox);
-      sideColourChanger(clnNoteBox, clnHomeBox);
+    sidebarHomeBox.addEventListener("click", function(event) {
+      sideColourChanger(sidebarTodayBox, sidebarHomeBox);
+      sideColourChanger(sidebarWeekBox, sidebarHomeBox);
+      sideColourChanger(sidebarNoteBox, sidebarHomeBox);
       buttonHandler('home');
     }) ;
-    clnTodayBox.addEventListener("click", function(event) {
-      sideColourChanger(clnHomeBox, clnTodayBox);
-      sideColourChanger(clnWeekBox, clnTodayBox);
-      sideColourChanger(clnNoteBox, clnTodayBox);
+    sidebarTodayBox.addEventListener("click", function(event) {
+      sideColourChanger(sidebarHomeBox, sidebarTodayBox);
+      sideColourChanger(sidebarWeekBox, sidebarTodayBox);
+      sideColourChanger(sidebarNoteBox, sidebarTodayBox);
       sideColourChanger(homeBox, todayBox);
       sideColourChanger(weekBox, todayBox);
       sideColourChanger(noteBox, todayBox);
       
       buttonHandler('today');
     }) ;
-    clnWeekBox.addEventListener("click", function(event) {
-      sideColourChanger(clnTodayBox, clnWeekBox);
-      sideColourChanger(clnHomeBox, clnWeekBox);
-      sideColourChanger(clnNoteBox, clnWeekBox);
+    sidebarWeekBox.addEventListener("click", function(event) {
+      sideColourChanger(sidebarTodayBox, sidebarWeekBox);
+      sideColourChanger(sidebarHomeBox, sidebarWeekBox);
+      sideColourChanger(sidebarNoteBox, sidebarWeekBox);
       sideColourChanger(todayBox, weekBox);
       sideColourChanger(homeBox, weekBox);
       sideColourChanger(noteBox, weekBox);
       buttonHandler('week');
     }) ;
-    clnNoteBox.addEventListener("click", function(event) {
-      sideColourChanger(clnTodayBox, clnNoteBox);
-      sideColourChanger(clnWeekBox, clnNoteBox);
-      sideColourChanger(clnHomeBox, clnNoteBox);
+    sidebarNoteBox.addEventListener("click", function(event) {
+      sideColourChanger(sidebarTodayBox, sidebarNoteBox);
+      sideColourChanger(sidebarWeekBox, sidebarNoteBox);
+      sideColourChanger(sidebarHomeBox, sidebarNoteBox);
       sideColourChanger(todayBox, noteBox);
       sideColourChanger(weekBox, noteBox);
       sideColourChanger(homeBox, noteBox);
@@ -323,16 +341,21 @@ import noteMain from './note.js';
     }) ;
 
 
+    // sidebarProjectBox.addEventListener("click", function(event) {
+    //   console.log("handle");
+    // });
+
+
     function sideColourChanger(boxToRemove, boxToAdd) {
       boxToRemove.classList.remove("clickedOn");
       boxToAdd.classList.add("clickedOn");
     }
     
-    sidebar.appendChild(clnHomeBox);
-    sidebar.appendChild(clnTodayBox);
-    sidebar.appendChild(clnWeekBox);
-    sidebar.appendChild(clnProjectBox);
-    sidebar.appendChild(clnNoteBox);
+    sidebar.appendChild(sidebarHomeBox);
+    sidebar.appendChild(sidebarTodayBox);
+    sidebar.appendChild(sidebarWeekBox);
+    sidebar.appendChild(sidebarProjectBox);
+    sidebar.appendChild(sidebarNoteBox);
 
     mainholder.appendChild(sidebar);
     mainholder.appendChild(showMore);
@@ -359,13 +382,11 @@ import noteMain from './note.js';
    return element;
  }
 
+
+
+
  function buttonHandler(toSwitchTo) {
   clearMain();
-  // let boxes = document.querySelectorAll("#homeSVG");
-  // boxes.forEach((box) => {
-  //   box.classList.remove("clickedOn");
-  //   console.log("removing clickedOn from " + box.innerHTML);
-  // })
   switch(toSwitchTo) {
       case 'home':
          document.querySelector('.mainholder').appendChild(homeMain());
@@ -383,6 +404,8 @@ import noteMain from './note.js';
 
   document.querySelector('.wrapper').appendChild(genFooter());
 
+  bindSidebars()
+
 }
 
 
@@ -397,8 +420,21 @@ function genFooter() {
   footer.classList.add("footer");
   footer.textContent = "Anthony McDonald - The Odin Project";
 
+
   return footer;
 }
+
+function bindSidebars() {
+  document.getElementById('proj1').addEventListener("click", function(event) {
+    console.log('handle proj1')
+    }) ;
+    document.getElementById('addProj').addEventListener("click", function(event) {
+      console.log('handling addProj')
+      document.querySelector('.mainholder').appendChild(homeMain());
+      }) ;
+}
+
+
 
  document.body.appendChild(component());
 

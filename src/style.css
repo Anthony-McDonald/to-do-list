@@ -227,6 +227,7 @@ font-family: 'Oswald';
     background-color: lightgray; 
     width: 100%;
     border-top: 1px solid black;
+    border: 1px solid red;
 }
 
 .projContent {
@@ -530,6 +531,13 @@ align-content: space-between;
     border: 1px solid red;
     height: 5rem;
     width: 15rem;
+}
+
+#projectEncloser {
+    height: 5rem;
+    width: 5rem;
+    color: red;
+    position: absolute;
 }
 
 
