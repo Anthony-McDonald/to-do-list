@@ -227,8 +227,9 @@ font-family: 'Oswald';
     background-color: lightgray; 
     width: 100%;
     border-top: 1px solid black;
-    border: 1px solid red;
 }
+
+
 
 .projContent {
     width: 100%;
@@ -512,6 +513,11 @@ align-content: space-between;
     height: 80%;
 }
 
+#projGendSidebar {
+    display: flex;
+    justify-content: space-between;
+}
+
 #closeAddTaskWindow {
     width: 1.5rem;
     height: 1.5rem;
@@ -534,8 +540,8 @@ align-content: space-between;
 }
 
 #projectEncloser {
-    height: 5rem;
-    width: 5rem;
+    height: 20rem;
+    width: 20rem;
     color: red;
     position: absolute;
 }

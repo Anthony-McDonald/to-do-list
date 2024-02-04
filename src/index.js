@@ -13,13 +13,13 @@ import todayMain from './today.js';
 import weekMain from './week.js';
 import projectMain from './proj_template.js';
 import noteMain from './note.js';
+import projRow from './projRow.js'
 
 
 // import Data from './data.xml';
 // import Notes from './data.csv';
 // import yaml from './data.yaml'
 
-// console.log(yaml.title);    for example
 
 
  function component() {
@@ -217,9 +217,32 @@ import noteMain from './note.js';
       localStorage.setItem('projID', 0);
     } 
 
-    for (let i = 0; i < localStorage.getItem('projID'); i++) {
+
+    for (let i = 1; i < localStorage.getItem('projID'); i++) {
       let element = document.createElement('div');
-      element.textContent = i;
+      let storedProjectID = i + "P";
+      element.id = 'projGendSidebar';
+      let elementLeft = document.createElement('div');
+      let deleteRight = document.createElement('div');
+      deleteRight.textContent = "X"
+      deleteRight.classList.add('delRight')
+      deleteRight.id ='closeAddTaskWindow';
+
+      // deleteRight.addEventListener("click", function(event) {
+      //   element.remove();
+      //   console.log('removing element ', i)
+      // }) ;
+
+
+      element.appendChild(elementLeft)
+      element.appendChild(deleteRight)
+      console.log(storedProjectID)
+
+      if (JSON.parse(localStorage.getItem(storedProjectID)) != null) {
+        let jsonObject = JSON.parse(localStorage.getItem(storedProjectID))
+        let toProjRow = new projRow(jsonObject.itemNumber, jsonObject.title);
+        elementLeft.textContent = toProjRow.getTitle()
+      }
       projContent.appendChild(element);
     }
 
@@ -384,7 +407,6 @@ import noteMain from './note.js';
 
 
 
-
  function buttonHandler(toSwitchTo) {
   clearMain();
   switch(toSwitchTo) {
@@ -428,14 +450,29 @@ function bindSidebars() {
   document.getElementById('proj1').addEventListener("click", function(event) {
     console.log('handle proj1')
     }) ;
-    document.getElementById('addProj').addEventListener("click", function(event) {
-      console.log('handling addProj')
-      document.querySelector('.mainholder').appendChild(homeMain());
-      }) ;
+  document.getElementById('addProj').addEventListener("click", function(event) {
+    console.log('handling addProj')
+    document.querySelector('.mainholder').appendChild(addProjFunction());
+    }) ;
+    redoProjectBars()
 }
 
+function redoProjectBars() {
+  let gendList = document.querySelectorAll('.delRight')
 
+  for (let i = 0; i < gendList.length; i++) {
+    gendList[i].addEventListener("click", function(event) {
+    gendList[i].parentElement.remove()
+    console.log(gendList[i])
+    
+    console.log('removing element ')
+  });
+  }
 
+  document.getElementById('closeAddTaskWindow').addEventListener("click", function(event) {
+    document.getElementById('closeAddTaskWindow')
+  }) ;
+}
  document.body.appendChild(component());
 
 
