@@ -65,6 +65,7 @@ export default function todayMain() {
                 let lastEntry = localStorage.getItem("projID");
                 localStorage.setItem(localStorage.getItem("projID") + "P", JSON.stringify(new projRow(localStorage.getItem("projID"), TN.value)));
                 closeAddNote.click()
+                location.reload();
 
 
 
@@ -102,6 +103,7 @@ export default function todayMain() {
 
     divToShow.appendChild(divTitle);
     divToShow.appendChild(divContent);
+
 
 
     return divToShow;

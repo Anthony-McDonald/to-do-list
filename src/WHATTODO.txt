@@ -1,5 +1,9 @@
 make indvidual project pages work as well as the ability to add new ones
+    - On this note, as of the moment sidebar items don't get
+    removed from localstorage on X click, just from the sidebar.
+    Have to sus that out
 
 Grey out projects on click, like elsewhere
 
-
+Using location.reload() atm to handle the refresh of the sidebar,
+that can be improved 

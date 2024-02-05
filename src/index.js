@@ -218,7 +218,7 @@ import projRow from './projRow.js'
     } 
 
 
-    for (let i = 1; i < localStorage.getItem('projID'); i++) {
+    for (let i = 1; i < localStorage.getItem('projID') + 1; i++) {
       let element = document.createElement('div');
       let storedProjectID = i + "P";
       element.id = 'projGendSidebar';
@@ -233,17 +233,21 @@ import projRow from './projRow.js'
       //   console.log('removing element ', i)
       // }) ;
 
-
+      console.log(elementLeft.innerHTML)
       element.appendChild(elementLeft)
       element.appendChild(deleteRight)
-      console.log(storedProjectID)
+      // console.log(storedProjectID)
 
       if (JSON.parse(localStorage.getItem(storedProjectID)) != null) {
         let jsonObject = JSON.parse(localStorage.getItem(storedProjectID))
         let toProjRow = new projRow(jsonObject.itemNumber, jsonObject.title);
         elementLeft.textContent = toProjRow.getTitle()
       }
+
+      // console.log(elementLeft.textContent === "")
+      if (elementLeft.textContent !== "") {
       projContent.appendChild(element);
+      }
     }
 
 
@@ -461,11 +465,43 @@ function redoProjectBars() {
   let gendList = document.querySelectorAll('.delRight')
 
   for (let i = 0; i < gendList.length; i++) {
+    // console.log("i of ", i)
+
+  
+
+
+
     gendList[i].addEventListener("click", function(event) {
-    gendList[i].parentElement.remove()
-    console.log(gendList[i])
-    
-    console.log('removing element ')
+    let thisRotation = localStorage.getItem((i + 1) + 'P');
+    console.log("parsing with an i of ", i, "P")
+    console.log(thisRotation)
+    let jsonObject = JSON.parse(thisRotation)
+    if (jsonObject != null) {
+      console.log(jsonObject.title)
+      let rows = gendList[i].parentElement.parentElement.childNodes
+      console.log(rows.length)
+  
+      for (let j = 0; j < rows.length; j++ ) {
+        console.log("j of ", j)
+        // console.log(rows[j].innerHTML, "row title")
+        let rowName = rows[j].firstChild.innerHTML;
+        console.log(rowName, " compared to ", jsonObject.title)
+  
+        if (rowName === jsonObject.title) {
+          console.log(rowName, " is the same as ", jsonObject.title, "removing...")
+          console.log("removing with a id of ", (i + 1) + "P")
+          localStorage.removeItem((i + 1) + "P");
+          gendList[i].parentElement.remove()
+        }
+  
+        console.log(rowName)
+        
+      }
+
+    } else {
+      console.log("jsonObject is null")
+    }
+
   });
   }
 
