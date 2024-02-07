@@ -216,16 +216,12 @@ import projRow from './projRow.js'
       let storedProjectID = i + "P";
       element.id = 'projGendSidebar';
       let elementLeft = document.createElement('div');
-      // elementLeft.id = 'elementToTheLeft'
+      elementLeft.id = 'elementLeft'
       let deleteRight = document.createElement('div');
       deleteRight.textContent = "X"
       deleteRight.classList.add('delRight')
       deleteRight.id ='closeAddTaskWindow';
 
-      // deleteRight.addEventListener("click", function(event) {
-      //   element.remove();
-      //   console.log('removing element ', i)
-      // }) ;
 
       console.log(elementLeft.innerHTML)
       element.appendChild(elementLeft)
@@ -423,11 +419,14 @@ import projRow from './projRow.js'
       case "note":
           document.querySelector('.mainholder').appendChild(noteMain());
           break;
+      case "project":
+        document.querySelector('.mainholder').appendChild(projectMain());
   }
 
   document.querySelector('.wrapper').appendChild(genFooter());
 
   bindSidebars()
+
 
 }
 
@@ -456,6 +455,17 @@ function bindSidebars() {
       document.querySelector('.mainholder').appendChild(addProjFunction());
       }) ;
   }
+
+  let projectEntryList = document.querySelectorAll('#elementLeft');
+
+  for (let j = 0; j < projectEntryList.length; j++) {
+    projectEntryList[j].addEventListener("click", function(event) {
+      buttonHandler("project");
+      console.log("trying to switch to project")
+    }) ;
+  }
+
+
     redoProjectBars()
 }
 
