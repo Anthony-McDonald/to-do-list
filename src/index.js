@@ -179,10 +179,7 @@ import projRow from './projRow.js'
 
 
 
-    const proj1 = document.createElement('div');
-    proj1.classList.add('proj');
-    proj1.innerText = 'proj1';
-    proj1.id = 'proj1'
+
 
 
 
@@ -205,13 +202,9 @@ import projRow from './projRow.js'
     projTitle.appendChild(projTitleText);
 
     
-    projContent.appendChild(proj1);
     projContent.appendChild(addProj);
 
-
-    const testElement = document.createElement('div');
-    testElement.textContent = 'test'
-    projContent.appendChild(testElement)
+  if (localStorage.getItem)
 
     if (localStorage.getItem('projID') == null) {
       localStorage.setItem('projID', 0);
@@ -223,6 +216,7 @@ import projRow from './projRow.js'
       let storedProjectID = i + "P";
       element.id = 'projGendSidebar';
       let elementLeft = document.createElement('div');
+      // elementLeft.id = 'elementToTheLeft'
       let deleteRight = document.createElement('div');
       deleteRight.textContent = "X"
       deleteRight.classList.add('delRight')
@@ -247,6 +241,7 @@ import projRow from './projRow.js'
       // console.log(elementLeft.textContent === "")
       if (elementLeft.textContent !== "") {
       projContent.appendChild(element);
+      projContent.insertBefore(element, projContent.firstChild);
       }
     }
 
@@ -451,9 +446,6 @@ function genFooter() {
 }
 
 function bindSidebars() {
-  document.getElementById('proj1').addEventListener("click", function(event) {
-    console.log('handle proj1')
-    }) ;
   document.getElementById('addProj').addEventListener("click", function(event) {
     console.log('handling addProj')
     document.querySelector('.mainholder').appendChild(addProjFunction());
@@ -461,49 +453,88 @@ function bindSidebars() {
     redoProjectBars()
 }
 
+
 function redoProjectBars() {
-  let gendList = document.querySelectorAll('.delRight')
+  let gendList = document.querySelectorAll('#projGendSidebar')
 
-  for (let i = 0; i < gendList.length; i++) {
-    // console.log("i of ", i)
+  // for (let i = 0; i < gendList.length; i++) {
+  //   console.log('------------')
+  //   let reference = i + "P"
+  //   console.log(reference)
+  //   let divLeft = gendList[i].getElementsByTagName('div')[0]
+  //   let divRight = gendList[i].getElementsByTagName('div')[1]
+  //   console.log(divLeft.innerHTML, "DL")
+  //   console.log(divRight,"DR")
+  //   let toObject = localStorage.getItem(reference);
+  //   let jsonObject = JSON.parse(toObject);
+  //   console.log(toObject)
 
+  //   //----
+  //   divRight.addEventListener("click", (e) => {
+
+  //     let rows = gendList[i].childNodes
+  //     console.log(rows.length)
+
+  //     for (let j = 0; j < rows.length; j++ ) {
+  //       console.log("j of ", j)
+  //       console.log(rows[j].innerHTML, "row title")
+  //       let rowName = rows[j].innerHTML;
+  //       console.log(rowName, " compared to ", jsonObject.title)
+  
+  //       if (rowName === jsonObject.title) {
+  //         console.log(rowName, " is the same as ", jsonObject.title, "removing...")
+  //         console.log("removing with a id of ", (i) + "P")
+  //         localStorage.removeItem((i) + "P");
+  //         gendList[i].parentElement.remove()
+  //       }
+  //   }
+  //   divRight.parentElement.remove()
+  //   console.log("removing ", divLeft.innerHTML)
+  //   });
+  //   console.log(divLeft.innerHTML)
   
 
+  // }
 
+  function iteratorFunction(rowName, gendPassthrough) {
+    let maxValue = localStorage.getItem('projID')
+    if (maxValue != null) {
+      console.log(maxValue, " MV")
+      for (let i = 0; i < maxValue; i++) {
+        let reference = (i + 1) + 'P';
+        console.log(reference);
+        let thisRotation = localStorage.getItem(reference);
+        console.log(thisRotation)
+        if (thisRotation != null) {
+          let jsonObject = JSON.parse(thisRotation);
+          console.log(jsonObject)
 
-    gendList[i].addEventListener("click", function(event) {
-    let thisRotation = localStorage.getItem((i + 1) + 'P');
-    console.log("parsing with an i of ", i, "P")
-    console.log(thisRotation)
-    let jsonObject = JSON.parse(thisRotation)
-    if (jsonObject != null) {
-      console.log(jsonObject.title)
-      let rows = gendList[i].parentElement.parentElement.childNodes
-      console.log(rows.length)
-  
-      for (let j = 0; j < rows.length; j++ ) {
-        console.log("j of ", j)
-        // console.log(rows[j].innerHTML, "row title")
-        let rowName = rows[j].firstChild.innerHTML;
-        console.log(rowName, " compared to ", jsonObject.title)
-  
-        if (rowName === jsonObject.title) {
-          console.log(rowName, " is the same as ", jsonObject.title, "removing...")
-          console.log("removing with a id of ", (i + 1) + "P")
-          localStorage.removeItem((i + 1) + "P");
-          gendList[i].parentElement.remove()
+          if (rowName === jsonObject.title) {
+            console.log(rowName, " is the same as ", jsonObject.title)
+            localStorage.removeItem(reference);
+            gendPassthrough.remove();
+
+          }
         }
-  
-        console.log(rowName)
-        
       }
+    }
+    return 0;
+  }
 
-    } else {
-      console.log("jsonObject is null")
+  for (let i = 0; i < gendList.length + 1; i++) {
+    // console.log(i);
+
+    if (gendList[i] !== undefined) {
+      gendList[i].addEventListener("click", function(event) {
+        let rowName = gendList[i].firstChild.innerHTML;
+        iteratorFunction(rowName, gendList[i]);
+    
+      });
     }
 
-  });
+
   }
+
 
   document.getElementById('closeAddTaskWindow').addEventListener("click", function(event) {
     document.getElementById('closeAddTaskWindow')

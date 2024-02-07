@@ -54,6 +54,8 @@ export default function homeMain() {
     homeMain.appendChild(titleDiv);
     homeMain.appendChild(contentDiv);
 
+
     return homeMain;
+
 }
 
