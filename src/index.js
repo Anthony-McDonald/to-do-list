@@ -171,6 +171,7 @@ import projRow from './projRow.js'
 
     const projContent = document.createElement('div');
     projContent.classList.add('projContent');
+    projContent.id = 'projContent'
 
 
     projectBox.appendChild(projTitle);
@@ -204,7 +205,6 @@ import projRow from './projRow.js'
     
     projContent.appendChild(addProj);
 
-  if (localStorage.getItem)
 
     if (localStorage.getItem('projID') == null) {
       localStorage.setItem('projID', 0);
@@ -244,6 +244,8 @@ import projRow from './projRow.js'
       projContent.insertBefore(element, projContent.firstChild);
       }
     }
+
+
 
 
     //notebox
@@ -446,11 +448,6 @@ function genFooter() {
 }
 
 function bindSidebars() {
-  // document.getElementById('addProj').addEventListener("click", function(event) {
-  //   console.log('handling addProj')
-  //   document.querySelector('.mainholder').appendChild(addProjFunction());
-  //   }) ;
-
   let addProjList = document.querySelectorAll('#addProj')
 
   for (let i = 0; i < addProjList.length; i++) {
@@ -490,14 +487,14 @@ function redoProjectBars() {
         }
       }
     }
-    return 0;
+    return;
   }
 
   for (let i = 0; i < gendList.length + 1; i++) {
     // console.log(i);
 
     if (gendList[i] !== undefined) {
-      gendList[i].addEventListener("click", function(event) {
+      gendList[i].lastChild.addEventListener("click", function(event) {
         let rowName = gendList[i].firstChild.innerHTML;
         iteratorFunction(rowName, gendList[i]);
     
@@ -508,9 +505,9 @@ function redoProjectBars() {
   }
 
 
-  document.getElementById('closeAddTaskWindow').addEventListener("click", function(event) {
-    document.getElementById('closeAddTaskWindow')
-  }) ;
+  // document.getElementById('closeAddTaskWindow').addEventListener("click", function(event) {
+  //   document.getElementById('closeAddTaskWindow')
+  // }) ;
 }
  document.body.appendChild(component());
 
