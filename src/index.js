@@ -446,10 +446,19 @@ function genFooter() {
 }
 
 function bindSidebars() {
-  document.getElementById('addProj').addEventListener("click", function(event) {
-    console.log('handling addProj')
-    document.querySelector('.mainholder').appendChild(addProjFunction());
-    }) ;
+  // document.getElementById('addProj').addEventListener("click", function(event) {
+  //   console.log('handling addProj')
+  //   document.querySelector('.mainholder').appendChild(addProjFunction());
+  //   }) ;
+
+  let addProjList = document.querySelectorAll('#addProj')
+
+  for (let i = 0; i < addProjList.length; i++) {
+    addProjList[i].addEventListener("click", function(event) {
+      console.log('handling addProj')
+      document.querySelector('.mainholder').appendChild(addProjFunction());
+      }) ;
+  }
     redoProjectBars()
 }
 
@@ -457,44 +466,7 @@ function bindSidebars() {
 function redoProjectBars() {
   let gendList = document.querySelectorAll('#projGendSidebar')
 
-  // for (let i = 0; i < gendList.length; i++) {
-  //   console.log('------------')
-  //   let reference = i + "P"
-  //   console.log(reference)
-  //   let divLeft = gendList[i].getElementsByTagName('div')[0]
-  //   let divRight = gendList[i].getElementsByTagName('div')[1]
-  //   console.log(divLeft.innerHTML, "DL")
-  //   console.log(divRight,"DR")
-  //   let toObject = localStorage.getItem(reference);
-  //   let jsonObject = JSON.parse(toObject);
-  //   console.log(toObject)
 
-  //   //----
-  //   divRight.addEventListener("click", (e) => {
-
-  //     let rows = gendList[i].childNodes
-  //     console.log(rows.length)
-
-  //     for (let j = 0; j < rows.length; j++ ) {
-  //       console.log("j of ", j)
-  //       console.log(rows[j].innerHTML, "row title")
-  //       let rowName = rows[j].innerHTML;
-  //       console.log(rowName, " compared to ", jsonObject.title)
-  
-  //       if (rowName === jsonObject.title) {
-  //         console.log(rowName, " is the same as ", jsonObject.title, "removing...")
-  //         console.log("removing with a id of ", (i) + "P")
-  //         localStorage.removeItem((i) + "P");
-  //         gendList[i].parentElement.remove()
-  //       }
-  //   }
-  //   divRight.parentElement.remove()
-  //   console.log("removing ", divLeft.innerHTML)
-  //   });
-  //   console.log(divLeft.innerHTML)
-  
-
-  // }
 
   function iteratorFunction(rowName, gendPassthrough) {
     let maxValue = localStorage.getItem('projID')
@@ -541,6 +513,7 @@ function redoProjectBars() {
   }) ;
 }
  document.body.appendChild(component());
+
 
 
 
