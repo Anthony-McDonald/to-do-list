@@ -5,6 +5,3 @@ Grey out projects on click, like elsewhere
 Using location.reload() atm to handle the refresh of the sidebar,
 that can be improved 
 
-Projects at the list redirect to proj_template now because of lines 461-466. Need to add logic to switch to an individual page,
-per one clicked on and the logic to locally store each project list away from each other. Just going to use the proj_templat page and 
-edit the tasks that show up on that dependent on which one is registered as being clicked.

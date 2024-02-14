@@ -203,6 +203,7 @@ import todoItem from './todoItem.js';
     projTitle.appendChild(projSVG);
     projTitle.appendChild(projTitleText);
 
+
     
     projContent.appendChild(addProj);
 
@@ -224,7 +225,6 @@ import todoItem from './todoItem.js';
       deleteRight.id ='closeAddTaskWindow';
 
 
-      console.log(elementLeft.innerHTML)
       element.appendChild(elementLeft)
       element.appendChild(deleteRight)
       // console.log(storedProjectID)
@@ -281,38 +281,54 @@ import todoItem from './todoItem.js';
 // This is for the elements that show on narrow screen, phone etc.
     homeBox.addEventListener("click", function(event) {
       buttonHandler('home');
-      sideColourChanger(todayBox, homeBox);
-      sideColourChanger(weekBox, homeBox);
-      sideColourChanger(noteBox, homeBox);
-      sideColourChanger(sidebarTodayBox, sidebarHomeBox);
-      sideColourChanger(sidebarWeekBox, sidebarHomeBox);
-      sideColourChanger(sidebarNoteBox, sidebarHomeBox);
+      let sidebarList = document.querySelectorAll(".sidebar1");
+      for (let l = 0; l < sidebarList.length; l++) {
+        sidebarList[l].classList.remove("clickedOn");
+      }
+      let projectList = document.querySelectorAll("#projGendSidebar");
+      for (let k = 0; k < projectList.length; k++) {
+        projectList[k].classList.remove("clickedOn");
+      }
+      sidebarHomeBox.classList.add('clickedOn');
+      homeBox.classList.add("clickedOn");
     }) ;
     todayBox.addEventListener("click", function(event) {
-      sideColourChanger(homeBox, todayBox);
-      sideColourChanger(weekBox, todayBox);
-      sideColourChanger(noteBox, todayBox);
-      sideColourChanger(sidebarHomeBox, sidebarTodayBox);
-      sideColourChanger(sidebarWeekBox, sidebarTodayBox);
-      sideColourChanger(sidebarNoteBox, sidebarTodayBox);
+      let sidebarList = document.querySelectorAll(".sidebar1");
+      for (let l = 0; l < sidebarList.length; l++) {
+        sidebarList[l].classList.remove("clickedOn");
+      }
+      let projectList = document.querySelectorAll("#projGendSidebar");
+      for (let k = 0; k < projectList.length; k++) {
+        projectList[k].classList.remove("clickedOn");
+      }
+      sidebarTodayBox.classList.add('clickedOn');
+      todayBox.classList.add("clickedOn");
       buttonHandler('today');
     }) ;
     weekBox.addEventListener("click", function(event) {
-      sideColourChanger(todayBox, weekBox);
-      sideColourChanger(homeBox, weekBox);
-      sideColourChanger(noteBox, weekBox);
-      sideColourChanger(sidebarTodayBox, sidebarWeekBox);
-      sideColourChanger(sidebarHomeBox, sidebarWeekBox);
-      sideColourChanger(sidebarNoteBox, sidebarWeekBox);
+      let sidebarList = document.querySelectorAll(".sidebar1");
+      for (let l = 0; l < sidebarList.length; l++) {
+        sidebarList[l].classList.remove("clickedOn");
+      }
+      let projectList = document.querySelectorAll("#projGendSidebar");
+      for (let k = 0; k < projectList.length; k++) {
+        projectList[k].classList.remove("clickedOn");
+      }
+      sidebarWeekBox.classList.add('clickedOn');
+      weekBox.classList.add("clickedOn");
       buttonHandler('week');
     }) ;
     noteBox.addEventListener("click", function(event) {
-      sideColourChanger(todayBox, noteBox);
-      sideColourChanger(weekBox, noteBox);
-      sideColourChanger(homeBox, noteBox);
-      sideColourChanger(sidebarTodayBox, sidebarNoteBox);
-      sideColourChanger(sidebarWeekBox, sidebarNoteBox);
-      sideColourChanger(sidebarHomeBox, sidebarNoteBox);
+      let sidebarList = document.querySelectorAll(".sidebar1");
+      for (let l = 0; l < sidebarList.length; l++) {
+        sidebarList[l].classList.remove("clickedOn");
+      }
+      let projectList = document.querySelectorAll("#projGendSidebar");
+      for (let k = 0; k < projectList.length; k++) {
+        projectList[k].classList.remove("clickedOn");
+      }
+      sidebarNoteBox.classList.add('clickedOn');
+      noteBox.classList.add("clickedOn");
       buttonHandler('note');
     }) ;
 
@@ -327,39 +343,59 @@ import todoItem from './todoItem.js';
     const sidebarNoteBox = noteBox.cloneNode(true);
 
     sidebarHomeBox.addEventListener("click", function(event) {
-      sideColourChanger(sidebarTodayBox, sidebarHomeBox);
-      sideColourChanger(sidebarWeekBox, sidebarHomeBox);
-      sideColourChanger(sidebarNoteBox, sidebarHomeBox);
+      let sidebarList = document.querySelectorAll(".sidebar1");
+      for (let l = 0; l < sidebarList.length; l++) {
+        sidebarList[l].classList.remove("clickedOn");
+      }
+      let projectList = document.querySelectorAll("#projGendSidebar");
+      for (let k = 0; k < projectList.length; k++) {
+        projectList[k].classList.remove("clickedOn");
+      }
+      sidebarHomeBox.classList.add('clickedOn');
+      homeBox.classList.add("clickedOn");
       buttonHandler('home');
     }) ;
     sidebarTodayBox.addEventListener("click", function(event) {
-      sideColourChanger(sidebarHomeBox, sidebarTodayBox);
-      sideColourChanger(sidebarWeekBox, sidebarTodayBox);
-      sideColourChanger(sidebarNoteBox, sidebarTodayBox);
-      sideColourChanger(homeBox, todayBox);
-      sideColourChanger(weekBox, todayBox);
-      sideColourChanger(noteBox, todayBox);
+      let sidebarList = document.querySelectorAll(".sidebar1");
+      for (let l = 0; l < sidebarList.length; l++) {
+        sidebarList[l].classList.remove("clickedOn");
+      }
+      let projectList = document.querySelectorAll("#projGendSidebar");
+      for (let k = 0; k < projectList.length; k++) {
+        projectList[k].classList.remove("clickedOn");
+      }
+      sidebarTodayBox.classList.add('clickedOn');
+      todayBox.classList.add("clickedOn");
       
       buttonHandler('today');
     }) ;
     sidebarWeekBox.addEventListener("click", function(event) {
-      sideColourChanger(sidebarTodayBox, sidebarWeekBox);
-      sideColourChanger(sidebarHomeBox, sidebarWeekBox);
-      sideColourChanger(sidebarNoteBox, sidebarWeekBox);
-      sideColourChanger(todayBox, weekBox);
-      sideColourChanger(homeBox, weekBox);
-      sideColourChanger(noteBox, weekBox);
+      let sidebarList = document.querySelectorAll(".sidebar1");
+      for (let l = 0; l < sidebarList.length; l++) {
+        sidebarList[l].classList.remove("clickedOn");
+      }
+      let projectList = document.querySelectorAll("#projGendSidebar");
+      for (let k = 0; k < projectList.length; k++) {
+        projectList[k].classList.remove("clickedOn");
+      }
+      sidebarWeekBox.classList.add('clickedOn');
+      weekBox.classList.add('clickedOn')
       buttonHandler('week');
     }) ;
     sidebarNoteBox.addEventListener("click", function(event) {
-      sideColourChanger(sidebarTodayBox, sidebarNoteBox);
-      sideColourChanger(sidebarWeekBox, sidebarNoteBox);
-      sideColourChanger(sidebarHomeBox, sidebarNoteBox);
-      sideColourChanger(todayBox, noteBox);
-      sideColourChanger(weekBox, noteBox);
-      sideColourChanger(homeBox, noteBox);
+      let sidebarList = document.querySelectorAll(".sidebar1");
+      for (let l = 0; l < sidebarList.length; l++) {
+        sidebarList[l].classList.remove("clickedOn");
+      }
+      let projectList = document.querySelectorAll("#projGendSidebar");
+      for (let k = 0; k < projectList.length; k++) {
+        projectList[k].classList.remove("clickedOn");
+      }
+      sidebarNoteBox.classList.add('clickedOn');
+      noteBox.classList.add("clickedOn");
       buttonHandler('note');
     }) ;
+
 
 
     // sidebarProjectBox.addEventListener("click", function(event) {
@@ -371,6 +407,7 @@ import todoItem from './todoItem.js';
       boxToRemove.classList.remove("clickedOn");
       boxToAdd.classList.add("clickedOn");
     }
+
     
     sidebar.appendChild(sidebarHomeBox);
     sidebar.appendChild(sidebarTodayBox);
@@ -452,7 +489,6 @@ function bindSidebars() {
 
   for (let i = 0; i < addProjList.length; i++) {
     addProjList[i].addEventListener("click", function(event) {
-      console.log('handling addProj')
       document.querySelector('.mainholder').appendChild(addProjFunction());
       }) ;
   }
@@ -463,31 +499,38 @@ function bindSidebars() {
     projectEntryList[j].addEventListener("click", function(event) {
       buttonHandler("project");
       loadIndividualProjectScreen(projectEntryList[j].innerText);
-      console.log("trying to switch to project")
+
+      for (let k = 0; k < projectEntryList.length; k++) {
+        projectEntryList[k].parentElement.classList.remove("clickedOn");
+      }
+      let sidebarList = document.querySelectorAll(".sidebar1");
+      for (let l = 0; l < sidebarList.length; l++) {
+        sidebarList[l].classList.remove("clickedOn");
+      }
+
+      projectEntryList[j].parentElement.classList.add("clickedOn");
     }) ;
   }
-
-
     redoProjectBars()
 }
 
+
+
 function loadIndividualProjectScreen(getTitle) {
+
+  
+
 let divTitle = document.getElementById("subTitle");
 divTitle.innerText = getTitle;
 
 
-
 let tItemID = localStorage.getItem('tItemID');
 for (let i=1; i < tItemID; i++) {
-  console.log(i);
   let iteration = localStorage.getItem(i + 1);
-  console.log(iteration, " <- iteration");
   let iterationObject = JSON.parse(iteration);
 
   if (iterationObject != null) {
-    console.log('this one isnt null')
     if (iterationObject.page == getTitle) {
-      console.log("attempting to load ", getTitle);
 
       let nextEntry = new todoItem(iterationObject.itemNumber, iterationObject.title, iterationObject.description, iterationObject.dueDate,iterationObject.priority,iterationObject.attachedNotes,iterationObject.checked, iterationObject.page);
       let contentDiv = document.getElementById('projContentDiv');
@@ -507,23 +550,20 @@ for (let i=1; i < tItemID; i++) {
 function redoProjectBars() {
   let gendList = document.querySelectorAll('#projGendSidebar')
 
+  
+
 
 
   function iteratorFunction(rowName, gendPassthrough) {
     let maxValue = localStorage.getItem('projID')
     if (maxValue != null) {
-      console.log(maxValue, " MV")
       for (let i = 0; i < maxValue; i++) {
         let reference = (i + 1) + 'P';
-        console.log(reference);
         let thisRotation = localStorage.getItem(reference);
-        console.log(thisRotation)
         if (thisRotation != null) {
           let jsonObject = JSON.parse(thisRotation);
-          console.log(jsonObject)
           
           if (rowName === jsonObject.title) {
-            console.log(rowName, " is the same as ", jsonObject.title)
             localStorage.removeItem(reference);
             gendPassthrough.remove();
 

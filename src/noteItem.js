@@ -150,7 +150,6 @@ export default class noteItem {
           localStorage.setItem(this.getItemNumber(), JSON.stringify(new noteItem(this.itemNumber, TN.value, details.value)));
           editBoxClose.click()
           let jsonObject = JSON.parse(localStorage.getItem(this.itemNumber));
-          console.log(jsonObject);
           let nextEntry = new noteItem(jsonObject.itemNumber, jsonObject.title, jsonObject.description);
           contentDiv.appendChild(nextEntry.returnDiv(contentDiv));
       } else {
