@@ -2,8 +2,8 @@ import todoItem from "./todoItem";
 import showTaskForm from "./addTask";
 
 export default function projectMain() {
-    const homeMain = document.createElement('div');
-    homeMain.classList.add("main");
+    const projectMain = document.createElement('div');
+    projectMain.classList.add("main");
     
     const titleDiv = document.createElement('div');
     titleDiv.id = 'subpageTitleBar';
@@ -20,15 +20,21 @@ export default function projectMain() {
 
 
     const contentDiv = document.createElement('div');
+    contentDiv.id = "projContentDiv";
 
     // constructor for todoitem:(itemNumber, title, description, dueDate, priority, attachedNotes, checked, page) 
 
-    const exampleToDo = new todoItem(1,'brush teeth', 'with toothpaste', '15/06/2024', 'medium', "",false, "home");
 
+    const exampleToDo = new todoItem(1,'brush teeth', 'with toothpaste', '15/06/2024', 'medium', "",false, "project");
 
+// function projectTagCreator() {
+//     let projectTag = document.getElementById('subTitle').innerText;
+//     console.log(projectTag);
+//     return projectTag;
+// }
 
     addNewToDo.addEventListener('click', function() {
-        homeMain.appendChild(showTaskForm(contentDiv, "home"));
+        projectMain.appendChild(showTaskForm(contentDiv, "project"));
         
         
     });
@@ -39,23 +45,23 @@ export default function projectMain() {
     for (let i = -1; i < parseInt(idsInStorage); i++) {
         
         let jsonObject = JSON.parse(localStorage.getItem(i + 1))
-        if (jsonObject != null && jsonObject.page == "home") {
+        if (jsonObject != null && jsonObject.page == "project") {
             let nextEntry = new todoItem(jsonObject.itemNumber, jsonObject.title, jsonObject.description, jsonObject.dueDate,jsonObject.priority,jsonObject.attachedNotes,jsonObject.checked, jsonObject.page);
             contentDiv.appendChild(nextEntry.returnDiv(contentDiv));
         }
 
     };
 
-    // homeMain.appendChild(exampleToDo.returnDiv());
+    // projectMain.appendChild(exampleToDo.returnDiv());
     // console.log(exampleToDo);
     titleDiv.appendChild(title);
     titleDiv.appendChild(addNewToDo);
 
-    homeMain.appendChild(titleDiv);
-    homeMain.appendChild(contentDiv);
+    projectMain.appendChild(titleDiv);
+    projectMain.appendChild(contentDiv);
 
 
-    return homeMain;
+    return projectMain;
 
 }
 

@@ -92,7 +92,7 @@ export default function showTaskForm(contentDiv, page) {
 
                 }
                 let lastEntry = localStorage.getItem("tItemID");
-                localStorage.setItem(localStorage.getItem("tItemID"), JSON.stringify(new todoItem(localStorage.getItem("tItemID"), TN.value, details.value, DOC.value, priorityDropdown.value, "", false, page )));
+                localStorage.setItem(localStorage.getItem("tItemID"), JSON.stringify(new todoItem(localStorage.getItem("tItemID"), TN.value, details.value, DOC.value, priorityDropdown.value, "", false, projectTagCreator() )));
                 closeAddTask.click()
                 let jsonObject = JSON.parse(localStorage.getItem(lastEntry))
                 let nextEntry = new todoItem(jsonObject.itemNumber, jsonObject.title, jsonObject.description, jsonObject.dueDate,jsonObject.priority,jsonObject.attachedNotes, jsonObject.page);
@@ -104,7 +104,11 @@ export default function showTaskForm(contentDiv, page) {
             } else {
                 alert("please fill all boxes before submitting");
             }
-
+function projectTagCreator() {
+    let projectTag = divToShow.parentElement.firstChild.firstChild.innerText;
+    console.log(projectTag);
+    return projectTag;
+}
 function boxesFilled(titleName, details) {
     if (titleName.value.length == 0 || details.value.length == 0) {
         return false;

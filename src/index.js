@@ -14,6 +14,7 @@ import weekMain from './week.js';
 import projectMain from './proj_template.js';
 import noteMain from './note.js';
 import projRow from './projRow.js'
+import todoItem from './todoItem.js';
 
 
 // import Data from './data.xml';
@@ -461,6 +462,7 @@ function bindSidebars() {
   for (let j = 0; j < projectEntryList.length; j++) {
     projectEntryList[j].addEventListener("click", function(event) {
       buttonHandler("project");
+      loadIndividualProjectScreen(projectEntryList[j].innerText);
       console.log("trying to switch to project")
     }) ;
   }
@@ -468,6 +470,38 @@ function bindSidebars() {
 
     redoProjectBars()
 }
+
+function loadIndividualProjectScreen(getTitle) {
+let divTitle = document.getElementById("subTitle");
+divTitle.innerText = getTitle;
+
+
+
+let tItemID = localStorage.getItem('tItemID');
+for (let i=1; i < tItemID; i++) {
+  console.log(i);
+  let iteration = localStorage.getItem(i + 1);
+  console.log(iteration, " <- iteration");
+  let iterationObject = JSON.parse(iteration);
+
+  if (iterationObject != null) {
+    console.log('this one isnt null')
+    if (iterationObject.page == getTitle) {
+      console.log("attempting to load ", getTitle);
+
+      let nextEntry = new todoItem(iterationObject.itemNumber, iterationObject.title, iterationObject.description, iterationObject.dueDate,iterationObject.priority,iterationObject.attachedNotes,iterationObject.checked, iterationObject.page);
+      let contentDiv = document.getElementById('projContentDiv');
+          contentDiv.appendChild(nextEntry.returnDiv(contentDiv));
+      }
+
+    }
+  }
+
+}
+
+
+
+
 
 
 function redoProjectBars() {
@@ -487,7 +521,7 @@ function redoProjectBars() {
         if (thisRotation != null) {
           let jsonObject = JSON.parse(thisRotation);
           console.log(jsonObject)
-
+          
           if (rowName === jsonObject.title) {
             console.log(rowName, " is the same as ", jsonObject.title)
             localStorage.removeItem(reference);
