@@ -82,7 +82,6 @@ export default class todoItem {
   
 
       if (jsonObject == null) {
-        console.log('code runs');
         localStorage.setItem('0', JSON.stringify(exampleToDo));
         localStorage.setItem('1', JSON.stringify(exampleToDo1));
         localStorage.setItem('2', JSON.stringify(exampleToDo2));
@@ -150,12 +149,10 @@ export default class todoItem {
       }
       checkBox.addEventListener('change', () => {
         if (checkBox.checked) {
-          console.log("setting checked to true in the object for itemid " + this.getItemNumber())
           this.setChecked(true);
           jsonObject.checked = true;
 
         } else {
-          console.log("setting it to false");
           this.setChecked(false);
           jsonObject.checked = false;
         }
@@ -289,7 +286,6 @@ export default class todoItem {
           localStorage.setItem(this.getItemNumber(), JSON.stringify(new todoItem(this.itemNumber, TN.value, details.value, DOC.value, priorityDropdown.value, "", false, this.getPage() )));
           closeDiv.click()
           let jsonObject = JSON.parse(localStorage.getItem(this.itemNumber));
-          console.log(jsonObject);
           let nextEntry = new todoItem(jsonObject.itemNumber, jsonObject.title, jsonObject.description, jsonObject.dueDate,jsonObject.priority,jsonObject.attachedNotes, jsonObject.page);
           contentDiv.appendChild(nextEntry.returnDiv(contentDiv));
       } else {

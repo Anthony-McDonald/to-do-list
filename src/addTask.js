@@ -106,7 +106,6 @@ export default function showTaskForm(contentDiv, page) {
             }
 function projectTagCreator() {
     let projectTag = divToShow.parentElement.firstChild.firstChild.innerText;
-    console.log(projectTag);
     return projectTag;
 }
 function boxesFilled(titleName, details) {
