@@ -2,6 +2,10 @@ import todoItem from "./todoItem";
 import showTaskForm from "./addTask";
 
 export default function homeMain() {
+    if (localStorage.getItem('loadedOnce') == null) {
+        localStorage.setItem('loadedOnce', true);
+        location.reload();
+    }
     const homeMain = document.createElement('div');
     homeMain.classList.add("main");
     
@@ -38,7 +42,7 @@ export default function homeMain() {
     let idsInStorage = localStorage.getItem("tItemID");
     for (let i = -1; i < parseInt(idsInStorage); i++) {
         
-        let jsonObject = JSON.parse(localStorage.getItem(i + 1))
+        let jsonObject = JSON.parse(localStorage.getItem(i))
         if (jsonObject != null && jsonObject.page == "home") {
             let nextEntry = new todoItem(jsonObject.itemNumber, jsonObject.title, jsonObject.description, jsonObject.dueDate,jsonObject.priority,jsonObject.attachedNotes,jsonObject.checked, jsonObject.page);
             contentDiv.appendChild(nextEntry.returnDiv(contentDiv));
