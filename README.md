@@ -1,6 +1,6 @@
 # TO-DO List #
 
-This was created as part of the christening that all new developers go through during their "lwhat can I make?" phase.
+This was created as part of the christening that all new developers go through during their "what can I make?" phase.
 
 Made the decision to use a more retro look for the UX, to suit this being the old fashioned project that it is. CRUD functionality showcased as follows:
 
