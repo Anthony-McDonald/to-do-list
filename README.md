@@ -9,8 +9,8 @@ Users can switch between different projects which are collections of to-dos.
 ![](https://github.com/Anthony-McDonald/to-do-list/assets/89093671/263ad97f-9659-4667-819b-f83d4899ddbd)
 
 ## To-do manipulation ##
-
 To-dos can be created, edited, read and deleted!
+
 ![](https://github.com/Anthony-McDonald/to-do-list/assets/89093671/ed6d2621-fb6f-433c-92fe-e1115e171047)
 
 ## Notes ##
